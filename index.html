@@ -39,6 +39,9 @@
 <div class="card"><h3>¿Puedo cancelar?</h3><p>Sí. Mirá nuestra <a href="reembolsos.html">política de reembolsos</a>.</p></div>
 <div class="card"><h3>¿Cómo los contacto?</h3><p>Escribinos a <a href="mailto:soporte@jcads.net">soporte@jcads.net</a>. Respondemos en hasta 48 h hábiles.</p></div>
 </div></div></section>
+<section class="anun"><div class="wrap"><h2>Anunciantes que confían en JC ADS</h2><p class="sub">Acá van a ir apareciendo los logos de nuestros anunciantes</p>
+<div id="orbita"><canvas id="fuegos"></canvas><img class="orb-centro" src="logo.png" alt="JC ADS"></div>
+<a class="orb-btn" href="https://hark.site/s/8563b99f-e0a3-43f0-8b82-cb8c0fb08f69">Quiero aparecer acá</a></div></section>
 </main>
 <footer><div class="wrap"><div class="foot">
 <div><strong style="color:var(--txt)">JC ADS Red Publicitaria Digital</strong><p>Publicidad digital online para empresas y sitios web de todo el mundo.</p></div>
@@ -46,4 +49,47 @@
 <div><strong style="color:var(--txt)">Contacto</strong><a href="mailto:soporte@jcads.net">soporte@jcads.net</a><span>Dr. Juan Eulogio Estigarribia, Caaguazú, Paraguay</span></div>
 <div><strong style="color:var(--txt)">Comunidad</strong><a href="https://discord.gg/5cZBbPgEYw" target="_blank" rel="noopener">Discord</a><a href="https://www.tiktok.com/@jcads.net" target="_blank" rel="noopener">TikTok</a></div>
 </div><p class="copy">© 2026 JC ADS Red Publicitaria Digital · Titular: Jocia Alicio Peralta Florentin</p></div></footer>
+<script>
+/* Carrusel de anunciantes JC ADS. Para agregar un anunciante real:
+   {nombre:"Marca", logo:"logos/marca.png", url:"https://..."} en ANUNCIANTES. */
+var ANUNCIANTES=[];
+(function(){
+var box=document.getElementById('orbita');if(!box)return;
+var L=document.documentElement.lang||'es';
+var ph={es:["Tu marca","Hotel","Tienda","Viajes","Motos","Tu logo","Celulares","Agencia"],
+ en:["Your brand","Hotel","Shop","Travel","Motorbikes","Your logo","Phones","Agency"],
+ pt:["Sua marca","Hotel","Loja","Viagens","Motos","Seu logo","Celulares","Agência"]}[L.slice(0,2)]||[];
+var cols=["#00b4ff","#ff5a78","#50dc8c","#ffbe3c","#aa6eff","#00dcdc","#ff8228","#5a8cff"];
+var items=ANUNCIANTES.length?ANUNCIANTES:ph.map(function(n){return{nombre:n}});
+var els=items.map(function(it,i){var a=document.createElement(it.url?'a':'div');a.className='orb-card';
+ if(it.url){a.href=it.url;a.target='_blank';a.rel='noopener sponsored';}
+ a.style.borderColor=cols[i%8];
+ a.innerHTML=(it.logo?'<img src="'+it.logo+'" alt="">':'<span class="orb-dot" style="background:'+cols[i%8]+'"></span>')+'<b>'+it.nombre+'</b>';
+ box.appendChild(a);return a;});
+var cv=document.getElementById('fuegos'),cx=cv.getContext('2d'),parts=[],t0=performance.now();
+function boom(){var W=cv.width,c=["#ffdc50","#00dcff","#ff5aa0","#78ff8c","#fff"];
+ parts.push({x:W/2,y:cv.height*0.62,vy:-4.2,r:1,life:0,rocket:1});}
+setInterval(boom,3200);boom();
+function frame(now){var W=box.clientWidth,H=box.clientHeight,rx=W*0.42,ry=H*0.2,cxp=W/2,cyp=H*0.58;
+ var t=(now-t0)/1000*2*Math.PI/14;
+ els.forEach(function(e,i){var a=t+2*Math.PI*i/els.length,s=Math.sin(a),sc=0.62+0.38*(s+1)/2;
+  e.style.left=(cxp+rx*Math.cos(a))+'px';e.style.top=(cyp+ry*s)+'px';
+  e.style.transform='translate(-50%,-50%) scale('+sc+')';e.style.zIndex=s>0?3:1;e.style.opacity=0.55+0.45*(s+1)/2;});
+ if(cv.width!==W||cv.height!==H){cv.width=W;cv.height=H;}
+ cx.clearRect(0,0,W,H);
+ for(var k=parts.length-1;k>=0;k--){var p=parts[k];
+  if(p.rocket){p.y+=p.vy;p.vy+=0.045;
+   var g=cx.createLinearGradient(p.x,p.y,p.x,p.y+40);g.addColorStop(0,'#fff6c8');g.addColorStop(1,'rgba(255,170,60,0)');
+   cx.fillStyle=g;cx.fillRect(p.x-3,p.y,6,40);cx.beginPath();cx.arc(p.x,p.y,5,0,7);cx.fillStyle='#fff';cx.fill();
+   if(p.vy>-0.6){parts.splice(k,1);var c=["#ffdc50","#00dcff","#ff5aa0","#78ff8c"];
+    for(var j=0;j<36;j++){var an=2*Math.PI*j/36,sp=2+Math.random()*1.6;
+     parts.push({x:p.x,y:p.y,vx:Math.cos(an)*sp,vy:Math.sin(an)*sp,life:1,col:c[j%4]});}}
+  }else{p.x+=p.vx;p.y+=p.vy;p.vy+=0.04;p.vx*=0.985;p.life-=0.012;
+   if(p.life<=0){parts.splice(k,1);continue;}
+   cx.globalAlpha=p.life;cx.beginPath();cx.arc(p.x,p.y,2.4,0,7);cx.fillStyle=p.col;cx.shadowColor=p.col;cx.shadowBlur=10;cx.fill();
+   cx.shadowBlur=0;cx.globalAlpha=1;}}
+ requestAnimationFrame(frame);}
+requestAnimationFrame(frame);
+})();
+</script>
 </body></html>
