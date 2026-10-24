@@ -43,10 +43,12 @@ footer a{color:var(--mut);text-decoration:none;display:block;margin:4px 0}footer
 #orbita{position:relative;height:480px;max-width:900px;margin:0 auto;overflow:hidden}
 #orbita::before{content:"";position:absolute;left:8%;right:8%;top:25%;height:60%;border:2px solid #28508c;border-radius:50%}
 #fuegos{position:absolute;inset:0;width:100%;height:100%;z-index:4;pointer-events:none}
-.orb-centro{position:absolute;left:50%;top:55%;width:150px;height:150px;transform:translate(-50%,-50%);border-radius:50%;z-index:2;box-shadow:0 0 60px 20px rgba(0,150,255,.35);animation:orbGira 20s linear infinite}
+.orb-centro{position:absolute;left:50%;top:55%;width:150px;height:150px;transform:translate(-50%,-50%);border-radius:50%;z-index:2;box-shadow:0 0 60px 20px rgba(0,150,255,.35)}
 @keyframes orbGira{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+.orb-punto{position:absolute;left:50%;top:55%;width:150px;height:150px;transform:translate(-50%,-50%);z-index:2;pointer-events:none;animation:orbGira 4s linear infinite}
+.orb-punto::after{content:"";position:absolute;left:50%;top:2px;width:10px;height:10px;margin-left:-5px;border-radius:50%;background:#fff;box-shadow:0 0 8px 3px rgba(255,255,255,.9),0 0 16px 6px rgba(0,200,255,.6)}
 .orb-card{position:absolute;width:130px;height:74px;background:#fff;border:3px solid;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:#14203c;text-decoration:none;font-size:15px;will-change:transform}
 .orb-card img{max-width:120px;max-height:44px;object-fit:contain}
 .orb-dot{width:34px;height:34px;border-radius:50%}
 .orb-btn{display:inline-block;margin-top:14px;background:#0096ff;color:#fff;padding:13px 30px;border-radius:30px;font-weight:700;text-decoration:none}
-@media(max-width:600px){#orbita{height:380px}.orb-card{width:110px;height:64px;font-size:12px}.orb-dot{width:24px;height:24px}.orb-centro{width:120px;height:120px}}
+@media(max-width:600px){#orbita{height:380px}.orb-card{width:110px;height:64px;font-size:12px}.orb-dot{width:24px;height:24px}.orb-centro,.orb-punto{width:120px;height:120px}}
