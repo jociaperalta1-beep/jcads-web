@@ -52,3 +52,22 @@ footer a{color:var(--mut);text-decoration:none;display:block;margin:4px 0}footer
 .orb-dot{width:34px;height:34px;border-radius:50%}
 .orb-btn{display:inline-block;margin-top:14px;background:#0096ff;color:#fff;padding:13px 30px;border-radius:30px;font-weight:700;text-decoration:none}
 @media(max-width:600px){#orbita{height:380px}.orb-card{width:110px;height:64px;font-size:12px}.orb-dot{width:24px;height:24px}.orb-centro,.orb-punto{width:120px;height:120px}}
+
+/* Pasos y Nos apoyan */
+.pasos{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;max-width:840px;margin:18px auto 6px;padding:18px 20px;border:2px solid #ffc83c;border-radius:18px;background:#16284f}
+.paso{display:flex;flex-direction:column;align-items:center;gap:8px;min-width:170px}
+.paso span{width:46px;height:46px;border-radius:50%;background:#0096ff;color:#fff;font-weight:800;font-size:22px;display:flex;align-items:center;justify-content:center}
+.paso b{color:#fff}
+.pasos i{color:#ffc83c;font-style:normal;font-size:28px;font-weight:800}
+.pasos-apo .paso span{background:#3ccdd7}
+.apoyo{text-align:center;border-top:1px solid #28508c;padding:48px 0}
+.apoyo .kicker{color:#46d7e6;font-weight:800;letter-spacing:1px;margin:0}
+.apoyo .sub{color:#b4c3dc;margin:-6px 0 18px}
+.apo-grid{display:flex;justify-content:center;gap:24px;flex-wrap:wrap}
+.apo-card{width:180px;height:150px;border:2px solid #5a6e96;border-radius:18px;background:#141e3c;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:#96a5c3}
+.apo-card span{width:60px;height:60px;border:2px solid #5a6e96;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px}
+.apo-jc{border:3px solid #46d7e6;background:#18264e;color:#fff}
+.apo-jc img{width:96px;height:96px;border-radius:50%}
+.apo-btn{background:#3ccdd7}
+.apo-mail{color:#b4c3dc;margin-top:12px}.apo-mail a{color:#46d7e6}
+@media(max-width:600px){.pasos i{transform:rotate(90deg)}.pasos{flex-direction:column}.apo-card{width:140px;height:130px}}
