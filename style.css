@@ -71,3 +71,27 @@ footer a{color:var(--mut);text-decoration:none;display:block;margin:4px 0}footer
 .apo-btn{background:#3ccdd7}
 .apo-mail{color:#b4c3dc;margin-top:12px}.apo-mail a{color:#46d7e6}
 @media(max-width:600px){.pasos i{transform:rotate(90deg)}.pasos{flex-direction:column}.apo-card{width:140px;height:130px}}
+
+.apo-btn{border:0;cursor:pointer;font-size:1rem;font-family:inherit}
+.apm{position:fixed;inset:0;background:rgba(2,8,20,.78);display:flex;align-items:center;justify-content:center;z-index:100;padding:16px}
+.apm[hidden]{display:none}
+.apm-box{background:#0d1a36;border:1px solid #2a4a8a;border-radius:22px;box-shadow:0 0 40px rgba(34,211,238,.25);max-width:440px;width:100%;padding:24px;max-height:92vh;overflow:auto;text-align:left}
+.apm-box h3{margin:0 0 8px;font-size:1.4rem}
+.apm-l{margin:14px 0 8px;color:#b4c3dc;font-size:.95rem}
+.apm-seg{display:flex;flex-wrap:wrap;gap:6px;background:#091430;border:1px solid #1d3566;border-radius:999px;padding:5px}
+.apm-seg button{flex:1 1 auto;background:transparent;border:0;color:#e8eefc;padding:9px 12px;border-radius:999px;cursor:pointer;font-weight:600;font-family:inherit}
+.apm-seg button.on{background:#3ccdd7;color:#04122b}
+.apm input{width:100%;margin-top:10px;padding:11px 14px;border-radius:12px;border:1px solid #1d3566;background:#091430;color:#e8eefc;font-size:1rem;font-family:inherit}
+.apm input[hidden]{display:none}
+.apm-info{margin-top:12px;background:#091430;border:1px solid #1d3566;border-radius:14px;padding:12px 14px;font-size:.92rem;color:#c8d4ec}
+.apm-info p{margin:4px 0}
+.apm-id b{font-family:ui-monospace,Consolas,monospace;font-size:1.15rem;color:#fff}
+.apm-id button{margin-left:6px;background:#1d3566;border:0;color:#e8eefc;border-radius:8px;padding:5px 10px;cursor:pointer;font-family:inherit}
+.apm-s{font-size:.85rem;color:#9fb0d4;margin:14px 0 0}
+.apm-err{color:#ff8a8a;margin:8px 0 0}
+.apm-ok{color:#5eead4;margin:10px 0 0;font-weight:600}
+.apm-w{width:100%;margin-top:14px}
+.apm-c{width:100%;margin-top:10px;background:transparent;border:1px solid #3a5a96;color:#e8eefc;padding:11px;border-radius:30px;cursor:pointer;font-family:inherit;font-weight:600}
+
+.apm-qr{text-align:center;margin:4px 0 10px}.apm-qr img{background:#fff;border-radius:12px;padding:8px;width:180px;height:180px}.apm-qr p{margin:6px 0 4px}.apm-qr a{color:#3ccdd7;font-weight:600}.apm-or{color:#9fb0d4;font-size:.88rem}
+.apm-qrt{font-weight:800;color:#f0b90b;font-size:1.1rem;margin:0 0 8px}
