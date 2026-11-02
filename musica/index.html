@@ -36,6 +36,12 @@
 <ul class="m-list" id="mlist"></ul>
 <p class="m-note">Las canciones de YouTube se escuchan con el reproductor oficial; no se descargan.</p>
 </section>
+<section class="m-favs" id="mfavs" aria-label="Mis favoritas">
+<h2><span class="m-hrt" aria-hidden="true">♥</span> Mis favoritas <span class="m-fcount" id="mfcount"></span></h2>
+<p class="m-fsub">Se guardan en este celular o compu. No hace falta registrarte.</p>
+<p class="m-state empty" id="mfempty">Todavía no guardaste canciones. Tocá el ♡ de un resultado para guardarla acá.</p>
+<ul class="m-list m-flist" id="mflist"></ul>
+</section>
 </div>
 <div class="m-pane" id="pane-libre" role="tabpanel" aria-labelledby="tab-libre" hidden>
 <p class="sub">Canciones con licencia libre: escuchalas y bajalas gratis, citando al autor.</p>
@@ -116,9 +122,50 @@
       var bt=document.createElement("button"); bt.type="button"; bt.className="m-play"; bt.textContent="▶ Escuchar";
       bt.setAttribute("aria-label","Escuchar "+it.title);
       bt.onclick=function(){play(it,li);};
-      li.appendChild(im); li.appendChild(tx); li.appendChild(bt); list.appendChild(li);
+      li.appendChild(im); li.appendChild(tx); li.appendChild(heartBtn(it)); li.appendChild(bt); list.appendChild(li);
     });
   }
+  /* Favoritas: guardadas en este navegador (localStorage) */
+  var FK="jcads_musica_favs", flist=$("mflist"), fempty=$("mfempty"), fcount=$("mfcount");
+  function getFavs(){try{var a=JSON.parse(localStorage.getItem(FK)||"[]");return Array.isArray(a)?a:[];}catch(e){return [];}}
+  function setFavs(a){try{localStorage.setItem(FK,JSON.stringify(a.slice(0,100)));}catch(e){}}
+  function isFav(id){return getFavs().some(function(x){return x.id===id;});}
+  function paint(b,on){
+    b.classList.toggle("on",on); b.textContent=on?"♥":"♡";
+    b.setAttribute("aria-pressed",on?"true":"false");
+    b.setAttribute("aria-label",(on?"Quitar de favoritas: ":"Guardar en favoritas: ")+b.getAttribute("data-t"));
+    b.title=on?"Quitar de favoritas":"Guardar en favoritas";
+  }
+  function paintHearts(){document.querySelectorAll(".m-fav[data-id]").forEach(function(b){paint(b,isFav(b.getAttribute("data-id")));});}
+  function toggleFav(it){
+    var a=getFavs(), i=a.findIndex(function(x){return x.id===it.id;});
+    if(i>-1)a.splice(i,1); else a.unshift({id:it.id,title:it.title,channel:it.channel||"",thumb:it.thumb||"",duration:it.duration||""});
+    setFavs(a); renderFavs(); paintHearts();
+  }
+  function heartBtn(it){
+    var b=document.createElement("button"); b.type="button"; b.className="m-fav";
+    b.setAttribute("data-id",it.id); b.setAttribute("data-t",it.title);
+    b.onclick=function(){toggleFav(it);};
+    paint(b,isFav(it.id)); return b;
+  }
+  function renderFavs(){
+    var a=getFavs(); flist.innerHTML="";
+    fcount.textContent=a.length?"("+a.length+")":""; fempty.hidden=a.length>0;
+    a.forEach(function(it){
+      var li=document.createElement("li"); li.className="m-item";
+      var im=document.createElement("img"); im.className="m-thumb"; im.alt=""; im.loading="lazy"; im.width=120; im.height=68;
+      if(it.thumb)im.src=it.thumb;
+      var tx=document.createElement("div"); tx.className="m-txt";
+      var b=document.createElement("b"); b.textContent=it.title;
+      var sm=document.createElement("small"); sm.textContent=it.channel+(it.duration?" · "+it.duration:"");
+      tx.appendChild(b); tx.appendChild(sm);
+      var bt=document.createElement("button"); bt.type="button"; bt.className="m-play"; bt.textContent="▶ Escuchar";
+      bt.setAttribute("aria-label","Escuchar "+it.title);
+      bt.onclick=function(){list.querySelectorAll(".m-item.on").forEach(function(x){x.classList.remove("on");});play(it,li);};
+      li.appendChild(im); li.appendChild(tx); li.appendChild(heartBtn(it)); li.appendChild(bt); flist.appendChild(li);
+    });
+  }
+  renderFavs();
   async function search(term){
     term=(term||"").replace(/\s+/g," ").trim();
     if(term.length<2){state("empty","Escribí al menos 2 letras para buscar.");q.focus();return;}
