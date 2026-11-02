@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Convertir Excel a PDF gratis online, sin registro | JC ADS</title><meta name="description" content="Pasá tu planilla de Excel (.xlsx, .xls, .csv) a PDF gratis, sin registrarte y sin marca de agua. Cada hoja en su propia sección. Se procesa en tu navegador.">
+<link rel="canonical" href="https://jcads.net/herramientas/excel-a-pdf.html">
+<link rel="icon" type="image/png" href="../favicon.png"><link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="../herramientas/tools.css">
+<meta property="og:type" content="website"><meta property="og:site_name" content="JC ADS"><meta property="og:locale" content="es_ES">
+<meta property="og:title" content="Convertir Excel a PDF gratis online, sin registro | JC ADS"><meta property="og:description" content="Pasá tu planilla de Excel (.xlsx, .xls, .csv) a PDF gratis, sin registrarte y sin marca de agua. Cada hoja en su propia sección. Se procesa en tu navegador."><meta property="og:url" content="https://jcads.net/herramientas/excel-a-pdf.html"><meta property="og:image" content="https://jcads.net/logo.png">
+<meta name="twitter:card" content="summary"><meta name="twitter:site" content="@jcads_oficial"><meta name="twitter:title" content="Convertir Excel a PDF gratis online, sin registro | JC ADS"><meta name="twitter:description" content="Pasá tu planilla de Excel (.xlsx, .xls, .csv) a PDF gratis, sin registrarte y sin marca de agua. Cada hoja en su propia sección. Se procesa en tu navegador."><meta name="twitter:image" content="https://jcads.net/logo.png">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebApplication", "name": "Convertir Excel a PDF", "url": "https://jcads.net/herramientas/excel-a-pdf.html", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Cualquiera (navegador web)", "inLanguage": "es", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@type": "Organization", "name": "JC ADS", "url": "https://jcads.net/"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Se mantienen las fórmulas?", "acceptedAnswer": {"@type": "Answer", "text": "El PDF muestra el resultado de cada fórmula, que es lo que se ve en la celda. Las fórmulas en sí no se copian, porque un PDF es un documento para leer o imprimir, no para calcular."}}, {"@type": "Question", "name": "¿Qué pasa con los gráficos y las imágenes de la planilla?", "acceptedAnswer": {"@type": "Answer", "text": "Esta herramienta convierte los datos de las celdas en tablas. Los gráficos, imágenes y colores de fondo de Excel no se incluyen en el PDF."}}, {"@type": "Question", "name": "¿Hay un límite de tamaño?", "acceptedAnswer": {"@type": "Answer", "text": "Podés convertir archivos de hasta 50 MB. Como todo se procesa en tu dispositivo, en celulares con poca memoria conviene usar planillas más livianas."}}]}]</script>
+<script>if(location.search.indexOf("preview")>-1)document.documentElement.classList.add("preview")</script></head><body>
+<header><div class="nav"><a class="brand" href="../index.html"><img src="../logo.png" alt="JC ADS"><span class="brand-t"><b>JC ADS</b><small>Red Publicitaria Digital</small></span></a>
+<nav><a href="../index.html#servicios">Servicios</a><a href="../index.html#precios">Precios</a><a href="../blog/index.html">Blog</a><a href="index.html">Herramientas</a><a href="../musica/index.html">Música</a><a href="../contacto.html">Contacto</a><a class="btn" href="https://jcads.net/entrar">Ingresar</a></nav></div></header>
+<main><div class="tool">
+<p class="crumbs"><a href="../index.html">Inicio</a> › <a href="index.html">Herramientas</a> › Excel a PDF</p>
+<h1>Convertir Excel a PDF</h1>
+<p class="sub">Convertí tus planillas .xlsx, .xls, .ods o .csv en un PDF prolijo, con cada hoja en su propia sección.</p>
+<p class="privacy">🔒 Tus archivos no se suben a ningún servidor.</p>
+<div class="ad-box ad-top"><span class="ad-label">Publicidad</span><div class="jcads-ad" data-slot="4" style="width:728px;height:90px"></div></div>
+<section class="panel" id="panel">
+<div class="drop" id="drop" tabindex="0" role="button" aria-label="Elegir archivo Excel">
+<button type="button" class="pick">+ Elegir archivo Excel</button>
+<p>o arrastralo acá</p>
+<input type="file" id="file" accept=".xlsx,.xls,.xlsm,.ods,.csv">
+</div>
+<ul class="files" id="files"></ul><div class="opts"><label><input type="checkbox" id="hdr" checked> La primera fila es el encabezado</label></div><button class="go" id="go" disabled>Convertir a PDF</button>
+<p class="err" id="err"></p>
+</section>
+<section class="wait" id="wait" hidden aria-live="polite">
+<h2 id="wtitle">Convirtiendo tu archivo...</h2>
+<p class="wname" id="wname"></p>
+<div class="bar" role="progressbar" aria-label="Progreso"><i id="bar"></i></div>
+<p class="wstat" id="wstat">0% · listo en 5 segundos</p>
+<div class="wads"><div class="ad-box"><span class="ad-label">Publicidad</span><div class="ad-frame" id="adWait"></div></div><div class="ad-box ad-mid"><span class="ad-label">Publicidad</span><div class="jcads-ad" data-slot="3" style="width:300px;height:250px"></div></div></div>
+<div class="ready" id="ready" hidden>
+<h3>¡Tu archivo está listo!</h3>
+<p class="meta" id="rmeta"></p>
+<div class="preview-img" id="rprev" hidden></div>
+<a class="dl" id="dl" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 19h16"/></svg><span id="dlt">Descargar</span></a><br>
+<button type="button" class="again" id="again">Convertir otro archivo</button>
+</div>
+<div class="ad-box ad-bottom"><span class="ad-label">Publicidad</span><div class="jcads-ad" data-slot="4" style="width:728px;height:90px"></div></div>
+</section>
+
+<section class="howto">
+<h2>Cómo convertir Excel a PDF</h2>
+<ol><li>Tocá <strong>Elegir archivo Excel</strong> o arrastrá tu planilla al recuadro.</li><li>Indicá si la primera fila de cada hoja es el encabezado (se resalta en el PDF).</li><li>Tocá <strong>Convertir a PDF</strong>, esperá unos segundos y descargá el resultado.</li></ol>
+<p>Cada hoja del libro empieza en una página nueva con su nombre como título. Si la hoja tiene muchas columnas, la página se gira en horizontal para que la tabla entre mejor. Se respetan los valores tal como los ves en Excel (fechas, monedas y porcentajes con su formato).</p>
+<h2>Preguntas frecuentes</h2>
+<h3>¿Se mantienen las fórmulas?</h3><p>El PDF muestra el resultado de cada fórmula, que es lo que se ve en la celda. Las fórmulas en sí no se copian, porque un PDF es un documento para leer o imprimir, no para calcular.</p><h3>¿Qué pasa con los gráficos y las imágenes de la planilla?</h3><p>Esta herramienta convierte los datos de las celdas en tablas. Los gráficos, imágenes y colores de fondo de Excel no se incluyen en el PDF.</p><h3>¿Hay un límite de tamaño?</h3><p>Podés convertir archivos de hasta 50 MB. Como todo se procesa en tu dispositivo, en celulares con poca memoria conviene usar planillas más livianas.</p>
+<h2>Más herramientas gratis</h2>
+<div class="more-tools"><a href="word-a-pdf.html">Word a PDF</a><a href="jpg-a-pdf.html">JPG a PDF</a><a href="comprimir-foto.html">Comprimir foto</a><a href="mp4-a-mp3.html">MP4 a MP3</a><a href="generador-qr.html">Generador QR</a><a href="unir-pdf.html">Unir PDF</a><a href="png-a-jpg.html">PNG a JPG</a><a href="contar-palabras.html">Contar palabras</a><a href="acortador.html">Acortador de links</a></div>
+</section>
+</div></main>
+<footer><div class="wrap"><div class="foot">
+<div><strong style="color:var(--txt)">JC ADS Red Publicitaria Digital</strong><p>Publicidad digital online para empresas y sitios web de todo el mundo.</p><a href="../blog/index.html">Blog</a><a href="index.html">Herramientas</a><a href="../musica/index.html">Música</a></div>
+<div><strong style="color:var(--txt)">Legal</strong><a href="../terminos.html">Términos y condiciones</a><a href="../privacidad.html">Política de privacidad</a><a href="../reembolsos.html">Política de reembolsos</a></div>
+<div><strong style="color:var(--txt)">Contacto</strong><a href="mailto:soporte@jcads.net">soporte@jcads.net</a><span>Dr. Juan Eulogio Estigarribia, Caaguazú, Paraguay</span></div>
+<div><strong style="color:var(--txt)">Comunidad</strong><a href="https://discord.gg/5cZBbPgEYw" target="_blank" rel="noopener">Discord</a><a href="https://www.tiktok.com/@jcads.net" target="_blank" rel="noopener">TikTok</a><a href="https://x.com/jcads_oficial" target="_blank" rel="noopener">X</a><a href="https://www.youtube.com/@jcads_oficial" target="_blank" rel="noopener">YouTube</a><a href="https://www.linkedin.com/in/jocia-peralta-322988446/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.instagram.com/jca.ds" target="_blank" rel="noopener">Instagram</a></div>
+</div><p class="copy">© 2026 JC ADS Red Publicitaria Digital · Titular: Jocia Alicio Peralta Florentin</p></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.2/dist/jspdf.plugin.autotable.min.js"></script>
+<script src="tools.js"></script>
+<script>
+var S=JCT.dropzone({accept:/\.(xlsx|xls|xlsm|ods|csv)$/i,maxBytes:50*1048576,badMsg:"Elegí un archivo de Excel (.xlsx, .xls, .ods o .csv)."});
+document.getElementById("go").onclick=function(){
+  var f=S.files[0], useHead=document.getElementById("hdr").checked;
+  JCT.convert({label:f.name+"  →  PDF",button:"Descargar PDF",work:async function(progress){
+    var buf=await JCT.readBuf(f); progress(.2);
+    var wb; try{wb=XLSX.read(buf,{type:"array"});}catch(e){throw new Error("No pudimos leer la planilla. ¿Es un archivo de Excel válido?");}
+    progress(.4);
+    var jsPDF=window.jspdf.jsPDF, doc=null, n=wb.SheetNames.length;
+    wb.SheetNames.forEach(function(name,i){
+      var rows=XLSX.utils.sheet_to_json(wb.Sheets[name],{header:1,raw:false,defval:"",blankrows:false});
+      var maxc=0; rows.forEach(function(r){for(var c=r.length-1;c>=0;c--){if(String(r[c]).trim()!==""){maxc=Math.max(maxc,c+1);break;}}});
+      var data=rows.map(function(r){var a=[];for(var c=0;c<maxc;c++)a.push(r[c]==null?"":String(r[c]));return a;})
+                   .filter(function(r){return r.some(function(v){return v.trim()!=="";});});
+      var orient=maxc>6?"landscape":"portrait";
+      if(!doc)doc=new jsPDF({orientation:orient,unit:"mm",format:"a4"});else doc.addPage("a4",orient);
+      doc.setFontSize(13);doc.setTextColor(13,26,54);doc.text(name,10,13);
+      if(!data.length){doc.setFontSize(10);doc.text("(hoja vacía)",10,21);return;}
+      var head=useHead&&data.length>1?[data[0]]:undefined, body=head?data.slice(1):data;
+      doc.autoTable({head:head,body:body,startY:17,theme:"grid",margin:{left:10,right:10,top:12,bottom:12},
+        styles:{fontSize:maxc>12?6:(maxc>8?7:8.5),cellPadding:1.4,overflow:"linebreak",textColor:[20,20,20]},
+        headStyles:{fillColor:[13,26,54],textColor:255,fontStyle:"bold"},alternateRowStyles:{fillColor:[242,246,252]}});
+      progress(.4+.55*(i+1)/n);
+    });
+    return {blob:doc.output("blob"),filename:JCT.baseName(f.name)+".pdf"};
+  }});
+};
+</script>
+<script async src="https://jcads.onrender.com/ads/jcads.js"></script>
+</body></html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Convertir Word a PDF gratis online, sin marca de agua | JC ADS</title><meta name="description" content="Convertí documentos de Word (.docx) a PDF gratis y sin registro. Conserva títulos, listas, tablas e imágenes. Tu archivo se procesa en tu navegador.">
+<link rel="canonical" href="https://jcads.net/herramientas/word-a-pdf.html">
+<link rel="icon" type="image/png" href="../favicon.png"><link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="../herramientas/tools.css">
+<meta property="og:type" content="website"><meta property="og:site_name" content="JC ADS"><meta property="og:locale" content="es_ES">
+<meta property="og:title" content="Convertir Word a PDF gratis online, sin marca de agua | JC ADS"><meta property="og:description" content="Convertí documentos de Word (.docx) a PDF gratis y sin registro. Conserva títulos, listas, tablas e imágenes. Tu archivo se procesa en tu navegador."><meta property="og:url" content="https://jcads.net/herramientas/word-a-pdf.html"><meta property="og:image" content="https://jcads.net/logo.png">
+<meta name="twitter:card" content="summary"><meta name="twitter:site" content="@jcads_oficial"><meta name="twitter:title" content="Convertir Word a PDF gratis online, sin marca de agua | JC ADS"><meta name="twitter:description" content="Convertí documentos de Word (.docx) a PDF gratis y sin registro. Conserva títulos, listas, tablas e imágenes. Tu archivo se procesa en tu navegador."><meta name="twitter:image" content="https://jcads.net/logo.png">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebApplication", "name": "Convertir Word a PDF", "url": "https://jcads.net/herramientas/word-a-pdf.html", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Cualquiera (navegador web)", "inLanguage": "es", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@type": "Organization", "name": "JC ADS", "url": "https://jcads.net/"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Puedo convertir archivos .doc antiguos?", "acceptedAnswer": {"@type": "Answer", "text": "Por ahora la herramienta trabaja con el formato moderno .docx. Si tenés un .doc, abrilo en Word, LibreOffice o Google Docs y guardalo como .docx antes de convertirlo."}}, {"@type": "Question", "name": "¿El PDF queda exactamente igual que en Word?", "acceptedAnswer": {"@type": "Answer", "text": "Se mantiene el contenido y la estructura, pero algunos detalles de diseño (fuentes especiales, columnas, encabezados y pies de página, cuadros de texto) pueden verse distintos."}}, {"@type": "Question", "name": "¿Mi documento queda guardado en algún lado?", "acceptedAnswer": {"@type": "Answer", "text": "No. El archivo se lee y se convierte dentro de tu navegador. Cuando cerrás la página, no queda ninguna copia."}}]}]</script>
+<script>if(location.search.indexOf("preview")>-1)document.documentElement.classList.add("preview")</script></head><body>
+<header><div class="nav"><a class="brand" href="../index.html"><img src="../logo.png" alt="JC ADS"><span class="brand-t"><b>JC ADS</b><small>Red Publicitaria Digital</small></span></a>
+<nav><a href="../index.html#servicios">Servicios</a><a href="../index.html#precios">Precios</a><a href="../blog/index.html">Blog</a><a href="index.html">Herramientas</a><a href="../musica/index.html">Música</a><a href="../contacto.html">Contacto</a><a class="btn" href="https://jcads.net/entrar">Ingresar</a></nav></div></header>
+<main><div class="tool">
+<p class="crumbs"><a href="../index.html">Inicio</a> › <a href="index.html">Herramientas</a> › Word a PDF</p>
+<h1>Convertir Word a PDF</h1>
+<p class="sub">Transformá tus documentos .docx en PDF listos para enviar o imprimir, con títulos, listas, tablas e imágenes.</p>
+<p class="privacy">🔒 Tus archivos no se suben a ningún servidor.</p>
+<div class="ad-box ad-top"><span class="ad-label">Publicidad</span><div class="jcads-ad" data-slot="4" style="width:728px;height:90px"></div></div>
+<section class="panel" id="panel">
+<div class="drop" id="drop" tabindex="0" role="button" aria-label="Elegir archivo Word">
+<button type="button" class="pick">+ Elegir archivo Word</button>
+<p>o arrastralo acá</p>
+<input type="file" id="file" accept=".docx">
+</div>
+<ul class="files" id="files"></ul><button class="go" id="go" disabled>Convertir a PDF</button>
+<p class="err" id="err"></p>
+</section>
+<section class="wait" id="wait" hidden aria-live="polite">
+<h2 id="wtitle">Convirtiendo tu archivo...</h2>
+<p class="wname" id="wname"></p>
+<div class="bar" role="progressbar" aria-label="Progreso"><i id="bar"></i></div>
+<p class="wstat" id="wstat">0% · listo en 5 segundos</p>
+<div class="wads"><div class="ad-box"><span class="ad-label">Publicidad</span><div class="ad-frame" id="adWait"></div></div><div class="ad-box ad-mid"><span class="ad-label">Publicidad</span><div class="jcads-ad" data-slot="3" style="width:300px;height:250px"></div></div></div>
+<div class="ready" id="ready" hidden>
+<h3>¡Tu archivo está listo!</h3>
+<p class="meta" id="rmeta"></p>
+<div class="preview-img" id="rprev" hidden></div>
+<a class="dl" id="dl" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 19h16"/></svg><span id="dlt">Descargar</span></a><br>
+<button type="button" class="again" id="again">Convertir otro archivo</button>
+</div>
+<div class="ad-box ad-bottom"><span class="ad-label">Publicidad</span><div class="jcads-ad" data-slot="4" style="width:728px;height:90px"></div></div>
+</section>
+
+<section class="howto">
+<h2>Cómo convertir Word a PDF</h2>
+<ol><li>Tocá <strong>Elegir archivo Word</strong> o arrastrá tu documento .docx al recuadro.</li><li>Tocá <strong>Convertir a PDF</strong>.</li><li>Cuando termine la barra, tocá <strong>Descargar PDF</strong> y listo.</li></ol>
+<p>La conversión respeta la estructura del documento: títulos, negritas, listas con viñetas o números, tablas e imágenes. El PDF se arma en tamaño A4 con márgenes cómodos para imprimir.</p>
+<h2>Preguntas frecuentes</h2>
+<h3>¿Puedo convertir archivos .doc antiguos?</h3><p>Por ahora la herramienta trabaja con el formato moderno .docx. Si tenés un .doc, abrilo en Word, LibreOffice o Google Docs y guardalo como .docx antes de convertirlo.</p><h3>¿El PDF queda exactamente igual que en Word?</h3><p>Se mantiene el contenido y la estructura, pero algunos detalles de diseño (fuentes especiales, columnas, encabezados y pies de página, cuadros de texto) pueden verse distintos.</p><h3>¿Mi documento queda guardado en algún lado?</h3><p>No. El archivo se lee y se convierte dentro de tu navegador. Cuando cerrás la página, no queda ninguna copia.</p>
+<h2>Más herramientas gratis</h2>
+<div class="more-tools"><a href="excel-a-pdf.html">Excel a PDF</a><a href="jpg-a-pdf.html">JPG a PDF</a><a href="comprimir-foto.html">Comprimir foto</a><a href="mp4-a-mp3.html">MP4 a MP3</a><a href="generador-qr.html">Generador QR</a><a href="unir-pdf.html">Unir PDF</a><a href="png-a-jpg.html">PNG a JPG</a><a href="contar-palabras.html">Contar palabras</a><a href="acortador.html">Acortador de links</a></div>
+</section>
+</div></main>
+<footer><div class="wrap"><div class="foot">
+<div><strong style="color:var(--txt)">JC ADS Red Publicitaria Digital</strong><p>Publicidad digital online para empresas y sitios web de todo el mundo.</p><a href="../blog/index.html">Blog</a><a href="index.html">Herramientas</a><a href="../musica/index.html">Música</a></div>
+<div><strong style="color:var(--txt)">Legal</strong><a href="../terminos.html">Términos y condiciones</a><a href="../privacidad.html">Política de privacidad</a><a href="../reembolsos.html">Política de reembolsos</a></div>
+<div><strong style="color:var(--txt)">Contacto</strong><a href="mailto:soporte@jcads.net">soporte@jcads.net</a><span>Dr. Juan Eulogio Estigarribia, Caaguazú, Paraguay</span></div>
+<div><strong style="color:var(--txt)">Comunidad</strong><a href="https://discord.gg/5cZBbPgEYw" target="_blank" rel="noopener">Discord</a><a href="https://www.tiktok.com/@jcads.net" target="_blank" rel="noopener">TikTok</a><a href="https://x.com/jcads_oficial" target="_blank" rel="noopener">X</a><a href="https://www.youtube.com/@jcads_oficial" target="_blank" rel="noopener">YouTube</a><a href="https://www.linkedin.com/in/jocia-peralta-322988446/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.instagram.com/jca.ds" target="_blank" rel="noopener">Instagram</a></div>
+</div><p class="copy">© 2026 JC ADS Red Publicitaria Digital · Titular: Jocia Alicio Peralta Florentin</p></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/mammoth@1.8.0/mammoth.browser.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.2/dist/html2pdf.bundle.min.js"></script>
+<script src="tools.js"></script>
+<script>
+var S=JCT.dropzone({accept:/\.docx$/i,maxBytes:40*1048576,badMsg:"Solo se aceptan archivos .docx. Si tenés un .doc antiguo, abrilo en Word y guardalo como .docx."});
+document.getElementById("go").onclick=function(){
+  var f=S.files[0];
+  JCT.convert({label:f.name+"  →  PDF",button:"Descargar PDF",work:async function(progress){
+    var buf=await JCT.readBuf(f); progress(.2);
+    var r; try{r=await mammoth.convertToHtml({arrayBuffer:buf},{styleMap:["p[style-name='Title'] => h1:fresh","p[style-name='Subtitle'] => h2:fresh"]});}catch(e){throw new Error("No pudimos leer el documento. ¿Es un archivo .docx válido?");}
+    if(!r.value||!r.value.replace(/<[^>]+>/g,"").trim()&&r.value.indexOf("<img")<0)throw new Error("El documento parece estar vacío.");
+    progress(.5);
+    var css="<style>.jw{font-family:Arial,Helvetica,sans-serif;font-size:11.5pt;line-height:1.5;color:#111;background:#fff;width:690px}"+
+      ".jw h1{font-size:20pt;margin:0 0 10px}.jw h2{font-size:16pt;margin:16px 0 8px}.jw h3{font-size:13pt;margin:14px 0 6px}"+
+      ".jw p{margin:0 0 8px}.jw img{max-width:100%;height:auto}.jw table{border-collapse:collapse;width:100%;margin:8px 0}"+
+      ".jw table,.jw tr,.jw td,.jw th{background:#fff!important;color:#111!important;border-radius:0;text-transform:none;letter-spacing:0;font-size:inherit;font-weight:inherit}.jw th{font-weight:bold}.jw td,.jw th{border:1px solid #999!important;padding:4px 6px;vertical-align:top}.jw tr{page-break-inside:avoid}.jw a{color:#1a56db}</style>";
+    var blob=await html2pdf().set({margin:[12,12,14,12],image:{type:"jpeg",quality:.95},
+      html2canvas:{scale:2,useCORS:true,backgroundColor:"#ffffff",logging:false,scrollX:0,scrollY:0},
+      jsPDF:{unit:"mm",format:"a4",orientation:"portrait"},pagebreak:{mode:["css","legacy"]}})
+      .from(css+'<div class="jw">'+r.value+"</div>","string").outputPdf("blob");
+    progress(1);
+    return {blob:blob,filename:JCT.baseName(f.name)+".pdf"};
+  }});
+};
+</script>
+<script async src="https://jcads.onrender.com/ads/jcads.js"></script>
+</body></html>

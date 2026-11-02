@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Convertir MP4 a MP3 gratis online: sacar el audio de un video | JC ADS</title><meta name="description" content="Extraé el audio de tus propios videos MP4 y guardalo como MP3 de 128 kbps. Gratis, sin registro y sin subir el video: todo pasa en tu navegador.">
+<link rel="canonical" href="https://jcads.net/herramientas/mp4-a-mp3.html">
+<link rel="icon" type="image/png" href="../favicon.png"><link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="../herramientas/tools.css">
+<meta property="og:type" content="website"><meta property="og:site_name" content="JC ADS"><meta property="og:locale" content="es_ES">
+<meta property="og:title" content="Convertir MP4 a MP3 gratis online: sacar el audio de un video | JC ADS"><meta property="og:description" content="Extraé el audio de tus propios videos MP4 y guardalo como MP3 de 128 kbps. Gratis, sin registro y sin subir el video: todo pasa en tu navegador."><meta property="og:url" content="https://jcads.net/herramientas/mp4-a-mp3.html"><meta property="og:image" content="https://jcads.net/logo.png">
+<meta name="twitter:card" content="summary"><meta name="twitter:site" content="@jcads_oficial"><meta name="twitter:title" content="Convertir MP4 a MP3 gratis online: sacar el audio de un video | JC ADS"><meta name="twitter:description" content="Extraé el audio de tus propios videos MP4 y guardalo como MP3 de 128 kbps. Gratis, sin registro y sin subir el video: todo pasa en tu navegador."><meta name="twitter:image" content="https://jcads.net/logo.png">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebApplication", "name": "Convertir MP4 a MP3", "url": "https://jcads.net/herramientas/mp4-a-mp3.html", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Cualquiera (navegador web)", "inLanguage": "es", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@type": "Organization", "name": "JC ADS", "url": "https://jcads.net/"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Puedo usarlo con videos de YouTube u otras plataformas?", "acceptedAnswer": {"@type": "Answer", "text": "Esta herramienta es para tus propios archivos: videos que grabaste vos o que tenés permiso para usar. No descarga videos de internet ni sirve para copiar contenido de otras personas."}}, {"@type": "Question", "name": "¿Por qué mi video no se convierte?", "acceptedAnswer": {"@type": "Answer", "text": "Puede que el video no tenga pista de audio o que use un formato que tu navegador no sabe leer. Probá con Chrome, Edge o Firefox actualizados, o con un video más corto."}}, {"@type": "Question", "name": "¿El video se sube a internet?", "acceptedAnswer": {"@type": "Answer", "text": "No. El audio se extrae y se codifica en tu propio dispositivo, sin enviar el video a ningún servidor."}}]}]</script>
+<script>if(location.search.indexOf("preview")>-1)document.documentElement.classList.add("preview")</script></head><body>
+<header><div class="nav"><a class="brand" href="../index.html"><img src="../logo.png" alt="JC ADS"><span class="brand-t"><b>JC ADS</b><small>Red Publicitaria Digital</small></span></a>
+<nav><a href="../index.html#servicios">Servicios</a><a href="../index.html#precios">Precios</a><a href="../blog/index.html">Blog</a><a href="index.html">Herramientas</a><a href="../musica/index.html">Música</a><a href="../contacto.html">Contacto</a><a class="btn" href="https://jcads.net/entrar">Ingresar</a></nav></div></header>
+<main><div class="tool">
+<p class="crumbs"><a href="../index.html">Inicio</a> › <a href="index.html">Herramientas</a> › MP4 a MP3</p>
+<h1>Convertir MP4 a MP3</h1>
+<p class="sub">Sacá el audio de tus videos y guardalo como MP3 (128 kbps), ideal para escucharlo en cualquier reproductor.</p>
+<p class="privacy">🔒 Tus archivos no se suben a ningún servidor.</p>
+<div class="ad-box ad-top"><span class="ad-label">Publicidad</span><div class="jcads-ad" data-slot="4" style="width:728px;height:90px"></div></div>
+<section class="panel" id="panel">
+<div class="drop" id="drop" tabindex="0" role="button" aria-label="Elegir video MP4">
+<button type="button" class="pick">+ Elegir video MP4</button>
+<p>o arrastralo acá</p>
+<input type="file" id="file" accept=".mp4,.m4v,.mov,.webm,.m4a">
+</div>
+<ul class="files" id="files"></ul><p class="sub" style="margin-top:12px;font-size:.9rem">Usá solo tus propios videos o contenido que tengas permiso para usar. Tamaño máximo: 200 MB.</p><button class="go" id="go" disabled>Convertir a MP3</button>
+<p class="err" id="err"></p>
+</section>
+<section class="wait" id="wait" hidden aria-live="polite">
+<h2 id="wtitle">Convirtiendo tu archivo...</h2>
+<p class="wname" id="wname"></p>
+<div class="bar" role="progressbar" aria-label="Progreso"><i id="bar"></i></div>
+<p class="wstat" id="wstat">0% · listo en 5 segundos</p>
+<div class="wads"><div class="ad-box"><span class="ad-label">Publicidad</span><div class="ad-frame" id="adWait"></div></div><div class="ad-box ad-mid"><span class="ad-label">Publicidad</span><div class="jcads-ad" data-slot="3" style="width:300px;height:250px"></div></div></div>
+<div class="ready" id="ready" hidden>
+<h3>¡Tu archivo está listo!</h3>
+<p class="meta" id="rmeta"></p>
+<div class="preview-img" id="rprev" hidden></div>
+<a class="dl" id="dl" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 19h16"/></svg><span id="dlt">Descargar</span></a><br>
+<button type="button" class="again" id="again">Convertir otro archivo</button>
+</div>
+<div class="ad-box ad-bottom"><span class="ad-label">Publicidad</span><div class="jcads-ad" data-slot="4" style="width:728px;height:90px"></div></div>
+</section>
+
+<section class="howto">
+<h2>Cómo convertir MP4 a MP3</h2>
+<ol><li>Tocá <strong>Elegir video MP4</strong> o arrastrá el archivo al recuadro.</li><li>Tocá <strong>Convertir a MP3</strong>. Los videos largos pueden tardar un poco más.</li><li>Descargá el MP3 y escuchalo en tu celular, computadora o parlante.</li></ol>
+<p>El audio se guarda en MP3 a 128 kbps, una calidad muy buena para voz y música que mantiene el archivo liviano. Funciona con videos de hasta 200 MB.</p>
+<h2>Preguntas frecuentes</h2>
+<h3>¿Puedo usarlo con videos de YouTube u otras plataformas?</h3><p>Esta herramienta es para tus propios archivos: videos que grabaste vos o que tenés permiso para usar. No descarga videos de internet ni sirve para copiar contenido de otras personas.</p><h3>¿Por qué mi video no se convierte?</h3><p>Puede que el video no tenga pista de audio o que use un formato que tu navegador no sabe leer. Probá con Chrome, Edge o Firefox actualizados, o con un video más corto.</p><h3>¿El video se sube a internet?</h3><p>No. El audio se extrae y se codifica en tu propio dispositivo, sin enviar el video a ningún servidor.</p>
+<h2>Más herramientas gratis</h2>
+<div class="more-tools"><a href="excel-a-pdf.html">Excel a PDF</a><a href="word-a-pdf.html">Word a PDF</a><a href="jpg-a-pdf.html">JPG a PDF</a><a href="comprimir-foto.html">Comprimir foto</a><a href="generador-qr.html">Generador QR</a><a href="unir-pdf.html">Unir PDF</a><a href="png-a-jpg.html">PNG a JPG</a><a href="contar-palabras.html">Contar palabras</a><a href="acortador.html">Acortador de links</a></div>
+</section>
+</div></main>
+<footer><div class="wrap"><div class="foot">
+<div><strong style="color:var(--txt)">JC ADS Red Publicitaria Digital</strong><p>Publicidad digital online para empresas y sitios web de todo el mundo.</p><a href="../blog/index.html">Blog</a><a href="index.html">Herramientas</a><a href="../musica/index.html">Música</a></div>
+<div><strong style="color:var(--txt)">Legal</strong><a href="../terminos.html">Términos y condiciones</a><a href="../privacidad.html">Política de privacidad</a><a href="../reembolsos.html">Política de reembolsos</a></div>
+<div><strong style="color:var(--txt)">Contacto</strong><a href="mailto:soporte@jcads.net">soporte@jcads.net</a><span>Dr. Juan Eulogio Estigarribia, Caaguazú, Paraguay</span></div>
+<div><strong style="color:var(--txt)">Comunidad</strong><a href="https://discord.gg/5cZBbPgEYw" target="_blank" rel="noopener">Discord</a><a href="https://www.tiktok.com/@jcads.net" target="_blank" rel="noopener">TikTok</a><a href="https://x.com/jcads_oficial" target="_blank" rel="noopener">X</a><a href="https://www.youtube.com/@jcads_oficial" target="_blank" rel="noopener">YouTube</a><a href="https://www.linkedin.com/in/jocia-peralta-322988446/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.instagram.com/jca.ds" target="_blank" rel="noopener">Instagram</a></div>
+</div><p class="copy">© 2026 JC ADS Red Publicitaria Digital · Titular: Jocia Alicio Peralta Florentin</p></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/lamejs@1.2.1/lame.min.js"></script>
+<script src="tools.js"></script>
+<script>
+var S=JCT.dropzone({accept:/\.(mp4|m4v|mov|webm|m4a)$/i,maxBytes:200*1048576,badMsg:"Elegí un video MP4 (también MOV, M4V, WEBM o M4A)."});
+function i16(f){var o=new Int16Array(f.length);for(var i=0;i<f.length;i++){var s=Math.max(-1,Math.min(1,f[i]));o[i]=s<0?s*32768:s*32767;}return o;}
+async function decode(buf){
+  var err=new Error("No pudimos leer el audio de este video. Revisá que tenga sonido o probá con otro navegador (Chrome o Edge).");
+  try{var oc=new OfflineAudioContext(2,44100,44100);return await oc.decodeAudioData(buf.slice(0));}catch(e){}
+  try{var AC=window.AudioContext||window.webkitAudioContext,ac=new AC();var a=await ac.decodeAudioData(buf);if(ac.close)ac.close();return a;}catch(e){throw err;}
+}
+document.getElementById("go").onclick=function(){
+  var f=S.files[0];
+  JCT.convert({title:"Extrayendo el audio...",label:f.name+"  →  MP3",button:"Descargar MP3",work:async function(progress){
+    var buf=await JCT.readBuf(f); progress(.1);
+    var audio=await decode(buf); buf=null; progress(.3);
+    var ch=Math.min(2,audio.numberOfChannels), sr=audio.sampleRate;
+    var L=i16(audio.getChannelData(0)), R=ch>1?i16(audio.getChannelData(1)):null;
+    var enc=new lamejs.Mp3Encoder(ch,sr,128), parts=[], blk=1152*24;
+    for(var i=0,n=0;i<L.length;i+=blk,n++){
+      var out=ch>1?enc.encodeBuffer(L.subarray(i,i+blk),R.subarray(i,i+blk)):enc.encodeBuffer(L.subarray(i,i+blk));
+      if(out.length)parts.push(new Uint8Array(out));
+      if(n%15===0){progress(.3+.68*i/L.length);await JCT.sleep(0);}
+    }
+    var end=enc.flush(); if(end.length)parts.push(new Uint8Array(end));
+    var blob=new Blob(parts,{type:"audio/mpeg"}), secs=Math.round(audio.duration);
+    return {blob:blob,filename:JCT.baseName(f.name)+".mp3",meta:JCT.esc(JCT.baseName(f.name))+".mp3 · "+Math.floor(secs/60)+":"+String(secs%60).padStart(2,"0")+" min · "+JCT.fmtSize(blob.size)};
+  }});
+};
+</script>
+<script async src="https://jcads.onrender.com/ads/jcads.js"></script>
+</body></html>

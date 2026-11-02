@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Unir PDF gratis online: juntar varios PDF en uno | JC ADS</title><meta name="description" content="Uní dos o más archivos PDF en un solo documento, en el orden que quieras. Gratis, sin registro y sin marca de agua. Se procesa en tu navegador.">
+<link rel="canonical" href="https://jcads.net/herramientas/unir-pdf.html">
+<link rel="icon" type="image/png" href="../favicon.png"><link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="../herramientas/tools.css">
+<meta property="og:type" content="website"><meta property="og:site_name" content="JC ADS"><meta property="og:locale" content="es_ES">
+<meta property="og:title" content="Unir PDF gratis online: juntar varios PDF en uno | JC ADS"><meta property="og:description" content="Uní dos o más archivos PDF en un solo documento, en el orden que quieras. Gratis, sin registro y sin marca de agua. Se procesa en tu navegador."><meta property="og:url" content="https://jcads.net/herramientas/unir-pdf.html"><meta property="og:image" content="https://jcads.net/logo.png">
+<meta name="twitter:card" content="summary"><meta name="twitter:site" content="@jcads_oficial"><meta name="twitter:title" content="Unir PDF gratis online: juntar varios PDF en uno | JC ADS"><meta name="twitter:description" content="Uní dos o más archivos PDF en un solo documento, en el orden que quieras. Gratis, sin registro y sin marca de agua. Se procesa en tu navegador."><meta name="twitter:image" content="https://jcads.net/logo.png">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebApplication", "name": "Unir PDF", "url": "https://jcads.net/herramientas/unir-pdf.html", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Cualquiera (navegador web)", "inLanguage": "es", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@type": "Organization", "name": "JC ADS", "url": "https://jcads.net/"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Cuántos PDF puedo unir?", "acceptedAnswer": {"@type": "Answer", "text": "Los que necesites, siempre que el total entre en la memoria de tu dispositivo. Cada archivo puede pesar hasta 100 MB."}}, {"@type": "Question", "name": "¿Funciona con PDF protegidos con contraseña?", "acceptedAnswer": {"@type": "Answer", "text": "Los PDF con contraseña de apertura no se pueden unir. Primero quitá la protección con el programa donde lo creaste y volvé a intentarlo."}}, {"@type": "Question", "name": "¿Se reduce la calidad?", "acceptedAnswer": {"@type": "Answer", "text": "No. Las páginas se copian sin volver a comprimirse, así que se ven exactamente igual que antes."}}]}]</script>
+<script>if(location.search.indexOf("preview")>-1)document.documentElement.classList.add("preview")</script></head><body>
+<header><div class="nav"><a class="brand" href="../index.html"><img src="../logo.png" alt="JC ADS"><span class="brand-t"><b>JC ADS</b><small>Red Publicitaria Digital</small></span></a>
+<nav><a href="../index.html#servicios">Servicios</a><a href="../index.html#precios">Precios</a><a href="../blog/index.html">Blog</a><a href="index.html">Herramientas</a><a href="../musica/index.html">Música</a><a href="../contacto.html">Contacto</a><a class="btn" href="https://jcads.net/entrar">Ingresar</a></nav></div></header>
+<main><div class="tool">
+<p class="crumbs"><a href="../index.html">Inicio</a> › <a href="index.html">Herramientas</a> › Unir PDF</p>
+<h1>Unir PDF</h1>
+<p class="sub">Juntá dos o más archivos PDF en un único documento y ordenalos como quieras antes de unirlos.</p>
+<p class="privacy">🔒 Tus archivos no se suben a ningún servidor.</p>
+<div class="ad-box ad-top"><span class="ad-label">Publicidad</span><div class="jcads-ad" data-slot="4" style="width:728px;height:90px"></div></div>
+<section class="panel" id="panel">
+<div class="drop" id="drop" tabindex="0" role="button" aria-label="Elegir archivos PDF">
+<button type="button" class="pick">+ Elegir archivos PDF</button>
+<p>o arrastralo acá</p>
+<input type="file" id="file" accept=".pdf,application/pdf" multiple>
+</div>
+<ul class="files" id="files"></ul><button class="go" id="go" disabled>Unir PDF</button>
+<p class="err" id="err"></p>
+</section>
+<section class="wait" id="wait" hidden aria-live="polite">
+<h2 id="wtitle">Convirtiendo tu archivo...</h2>
+<p class="wname" id="wname"></p>
+<div class="bar" role="progressbar" aria-label="Progreso"><i id="bar"></i></div>
+<p class="wstat" id="wstat">0% · listo en 5 segundos</p>
+<div class="wads"><div class="ad-box"><span class="ad-label">Publicidad</span><div class="ad-frame" id="adWait"></div></div><div class="ad-box ad-mid"><span class="ad-label">Publicidad</span><div class="jcads-ad" data-slot="3" style="width:300px;height:250px"></div></div></div>
+<div class="ready" id="ready" hidden>
+<h3>¡Tu archivo está listo!</h3>
+<p class="meta" id="rmeta"></p>
+<div class="preview-img" id="rprev" hidden></div>
+<a class="dl" id="dl" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 19h16"/></svg><span id="dlt">Descargar</span></a><br>
+<button type="button" class="again" id="again">Convertir otro archivo</button>
+</div>
+<div class="ad-box ad-bottom"><span class="ad-label">Publicidad</span><div class="jcads-ad" data-slot="4" style="width:728px;height:90px"></div></div>
+</section>
+
+<section class="howto">
+<h2>Cómo unir archivos PDF</h2>
+<ol><li>Tocá <strong>Elegir archivos PDF</strong> y seleccioná dos o más documentos (o arrastralos).</li><li>Ordenalos con las flechas ↑ ↓: el primero de la lista va al principio.</li><li>Tocá <strong>Unir PDF</strong> y descargá el documento completo.</li></ol>
+<p>Las páginas se copian tal cual, sin perder calidad: texto, imágenes, tamaño de hoja y orientación se mantienen igual que en los archivos originales.</p>
+<h2>Preguntas frecuentes</h2>
+<h3>¿Cuántos PDF puedo unir?</h3><p>Los que necesites, siempre que el total entre en la memoria de tu dispositivo. Cada archivo puede pesar hasta 100 MB.</p><h3>¿Funciona con PDF protegidos con contraseña?</h3><p>Los PDF con contraseña de apertura no se pueden unir. Primero quitá la protección con el programa donde lo creaste y volvé a intentarlo.</p><h3>¿Se reduce la calidad?</h3><p>No. Las páginas se copian sin volver a comprimirse, así que se ven exactamente igual que antes.</p>
+<h2>Más herramientas gratis</h2>
+<div class="more-tools"><a href="excel-a-pdf.html">Excel a PDF</a><a href="word-a-pdf.html">Word a PDF</a><a href="jpg-a-pdf.html">JPG a PDF</a><a href="comprimir-foto.html">Comprimir foto</a><a href="mp4-a-mp3.html">MP4 a MP3</a><a href="generador-qr.html">Generador QR</a><a href="png-a-jpg.html">PNG a JPG</a><a href="contar-palabras.html">Contar palabras</a><a href="acortador.html">Acortador de links</a></div>
+</section>
+</div></main>
+<footer><div class="wrap"><div class="foot">
+<div><strong style="color:var(--txt)">JC ADS Red Publicitaria Digital</strong><p>Publicidad digital online para empresas y sitios web de todo el mundo.</p><a href="../blog/index.html">Blog</a><a href="index.html">Herramientas</a><a href="../musica/index.html">Música</a></div>
+<div><strong style="color:var(--txt)">Legal</strong><a href="../terminos.html">Términos y condiciones</a><a href="../privacidad.html">Política de privacidad</a><a href="../reembolsos.html">Política de reembolsos</a></div>
+<div><strong style="color:var(--txt)">Contacto</strong><a href="mailto:soporte@jcads.net">soporte@jcads.net</a><span>Dr. Juan Eulogio Estigarribia, Caaguazú, Paraguay</span></div>
+<div><strong style="color:var(--txt)">Comunidad</strong><a href="https://discord.gg/5cZBbPgEYw" target="_blank" rel="noopener">Discord</a><a href="https://www.tiktok.com/@jcads.net" target="_blank" rel="noopener">TikTok</a><a href="https://x.com/jcads_oficial" target="_blank" rel="noopener">X</a><a href="https://www.youtube.com/@jcads_oficial" target="_blank" rel="noopener">YouTube</a><a href="https://www.linkedin.com/in/jocia-peralta-322988446/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.instagram.com/jca.ds" target="_blank" rel="noopener">Instagram</a></div>
+</div><p class="copy">© 2026 JC ADS Red Publicitaria Digital · Titular: Jocia Alicio Peralta Florentin</p></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<script src="tools.js"></script>
+<script>
+var S=JCT.dropzone({multiple:true,reorder:true,min:2,accept:/\.pdf$/i,maxBytes:100*1048576,badMsg:"Elegí archivos PDF."});
+document.getElementById("go").onclick=function(){
+  var files=S.files.slice();
+  JCT.convert({title:"Uniendo tus PDF...",label:files.length+" archivos PDF  →  1 PDF",button:"Descargar PDF",work:async function(progress){
+    var out=await PDFLib.PDFDocument.create(), pages=0;
+    for(var i=0;i<files.length;i++){
+      var src; try{src=await PDFLib.PDFDocument.load(await JCT.readBuf(files[i]),{ignoreEncryption:true});}
+      catch(e){throw new Error("No pudimos abrir "+files[i].name+". Puede estar dañado o protegido con contraseña.");}
+      var cp=await out.copyPages(src,src.getPageIndices()); cp.forEach(function(p){out.addPage(p);}); pages+=cp.length;
+      progress((i+1)/(files.length+1));
+    }
+    var bytes=await out.save(); var blob=new Blob([bytes],{type:"application/pdf"});
+    return {blob:blob,filename:"pdf-unido.pdf",meta:"pdf-unido.pdf · "+pages+" páginas · "+JCT.fmtSize(blob.size)};
+  }});
+};
+</script>
+<script async src="https://jcads.onrender.com/ads/jcads.js"></script>
+</body></html>

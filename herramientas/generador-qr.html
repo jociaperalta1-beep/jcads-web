@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Generador de código QR gratis: crear QR de un link o texto | JC ADS</title><meta name="description" content="Creá un código QR gratis a partir de un link, texto, número de WhatsApp o red wifi. Descargalo en PNG de alta calidad, sin registro y sin vencimiento.">
+<link rel="canonical" href="https://jcads.net/herramientas/generador-qr.html">
+<link rel="icon" type="image/png" href="../favicon.png"><link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="../herramientas/tools.css">
+<meta property="og:type" content="website"><meta property="og:site_name" content="JC ADS"><meta property="og:locale" content="es_ES">
+<meta property="og:title" content="Generador de código QR gratis: crear QR de un link o texto | JC ADS"><meta property="og:description" content="Creá un código QR gratis a partir de un link, texto, número de WhatsApp o red wifi. Descargalo en PNG de alta calidad, sin registro y sin vencimiento."><meta property="og:url" content="https://jcads.net/herramientas/generador-qr.html"><meta property="og:image" content="https://jcads.net/logo.png">
+<meta name="twitter:card" content="summary"><meta name="twitter:site" content="@jcads_oficial"><meta name="twitter:title" content="Generador de código QR gratis: crear QR de un link o texto | JC ADS"><meta name="twitter:description" content="Creá un código QR gratis a partir de un link, texto, número de WhatsApp o red wifi. Descargalo en PNG de alta calidad, sin registro y sin vencimiento."><meta name="twitter:image" content="https://jcads.net/logo.png">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebApplication", "name": "Generador de código QR", "url": "https://jcads.net/herramientas/generador-qr.html", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Cualquiera (navegador web)", "inLanguage": "es", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@type": "Organization", "name": "JC ADS", "url": "https://jcads.net/"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿El código QR vence?", "acceptedAnswer": {"@type": "Answer", "text": "No. Es un QR estático: la información está dentro de la imagen, así que funciona para siempre mientras el link de destino siga existiendo."}}, {"@type": "Question", "name": "¿Puedo hacer un QR para WhatsApp?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. Escribí https://wa.me/ seguido de tu número con código de país, sin espacios ni signos (por ejemplo https://wa.me/595981000000)."}}, {"@type": "Question", "name": "¿Qué tamaño elijo para imprimir?", "acceptedAnswer": {"@type": "Answer", "text": "Para impresiones pequeñas alcanza con 600 px. Para carteles o banners grandes elegí 1000 px y dejá un margen blanco alrededor del código."}}]}]</script>
+<script>if(location.search.indexOf("preview")>-1)document.documentElement.classList.add("preview")</script></head><body>
+<header><div class="nav"><a class="brand" href="../index.html"><img src="../logo.png" alt="JC ADS"><span class="brand-t"><b>JC ADS</b><small>Red Publicitaria Digital</small></span></a>
+<nav><a href="../index.html#servicios">Servicios</a><a href="../index.html#precios">Precios</a><a href="../blog/index.html">Blog</a><a href="index.html">Herramientas</a><a href="../musica/index.html">Música</a><a href="../contacto.html">Contacto</a><a class="btn" href="https://jcads.net/entrar">Ingresar</a></nav></div></header>
+<main><div class="tool">
+<p class="crumbs"><a href="../index.html">Inicio</a> › <a href="index.html">Herramientas</a> › Generador QR</p>
+<h1>Generador de código QR</h1>
+<p class="sub">Escribí un link o un texto y descargá su código QR en PNG, listo para imprimir o compartir.</p>
+<p class="privacy">🔒 Tus archivos no se suben a ningún servidor.</p>
+<div class="ad-box ad-top"><span class="ad-label">Publicidad</span><div class="jcads-ad" data-slot="4" style="width:728px;height:90px"></div></div>
+<section class="panel" id="panel">
+<label for="qt" style="display:block;font-weight:700;margin-bottom:8px">Link o texto</label><textarea class="field" id="qt" style="min-height:110px" placeholder="https://tu-sitio.com"></textarea><div class="opts"><label>Tamaño <select id="qs"><option value="300">300 px</option><option value="600" selected>600 px</option><option value="1000">1000 px</option></select></label><label>Color <input type="color" id="qc" value="#000000"></label><label>Fondo <input type="color" id="qb" value="#ffffff"></label></div><button class="go" id="go" disabled>Generar QR</button>
+<p class="err" id="err"></p>
+</section>
+<section class="wait" id="wait" hidden aria-live="polite">
+<h2 id="wtitle">Convirtiendo tu archivo...</h2>
+<p class="wname" id="wname"></p>
+<div class="bar" role="progressbar" aria-label="Progreso"><i id="bar"></i></div>
+<p class="wstat" id="wstat">0% · listo en 5 segundos</p>
+<div class="wads"><div class="ad-box"><span class="ad-label">Publicidad</span><div class="ad-frame" id="adWait"></div></div><div class="ad-box ad-mid"><span class="ad-label">Publicidad</span><div class="jcads-ad" data-slot="3" style="width:300px;height:250px"></div></div></div>
+<div class="ready" id="ready" hidden>
+<h3>¡Tu archivo está listo!</h3>
+<p class="meta" id="rmeta"></p>
+<div class="preview-img" id="rprev" hidden></div>
+<a class="dl" id="dl" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 19h16"/></svg><span id="dlt">Descargar</span></a><br>
+<button type="button" class="again" id="again">Crear otro QR</button>
+</div>
+<div class="ad-box ad-bottom"><span class="ad-label">Publicidad</span><div class="jcads-ad" data-slot="4" style="width:728px;height:90px"></div></div>
+</section>
+
+<section class="howto">
+<h2>Cómo crear un código QR</h2>
+<ol><li>Escribí o pegá el link o texto que querés convertir en QR.</li><li>Elegí el tamaño y, si querés, los colores (mantené buen contraste: oscuro sobre claro).</li><li>Tocá <strong>Generar QR</strong> y descargá la imagen PNG.</li></ol>
+<p>El código QR queda guardado en la imagen: no depende de ningún servidor y no vence nunca. Podés imprimirlo en carteles, menús, tarjetas o en el empaque de tus productos.</p>
+<h2>Preguntas frecuentes</h2>
+<h3>¿El código QR vence?</h3><p>No. Es un QR estático: la información está dentro de la imagen, así que funciona para siempre mientras el link de destino siga existiendo.</p><h3>¿Puedo hacer un QR para WhatsApp?</h3><p>Sí. Escribí https://wa.me/ seguido de tu número con código de país, sin espacios ni signos (por ejemplo https://wa.me/595981000000).</p><h3>¿Qué tamaño elijo para imprimir?</h3><p>Para impresiones pequeñas alcanza con 600 px. Para carteles o banners grandes elegí 1000 px y dejá un margen blanco alrededor del código.</p>
+<h2>Más herramientas gratis</h2>
+<div class="more-tools"><a href="excel-a-pdf.html">Excel a PDF</a><a href="word-a-pdf.html">Word a PDF</a><a href="jpg-a-pdf.html">JPG a PDF</a><a href="comprimir-foto.html">Comprimir foto</a><a href="mp4-a-mp3.html">MP4 a MP3</a><a href="unir-pdf.html">Unir PDF</a><a href="png-a-jpg.html">PNG a JPG</a><a href="contar-palabras.html">Contar palabras</a><a href="acortador.html">Acortador de links</a></div>
+</section>
+</div></main>
+<footer><div class="wrap"><div class="foot">
+<div><strong style="color:var(--txt)">JC ADS Red Publicitaria Digital</strong><p>Publicidad digital online para empresas y sitios web de todo el mundo.</p><a href="../blog/index.html">Blog</a><a href="index.html">Herramientas</a><a href="../musica/index.html">Música</a></div>
+<div><strong style="color:var(--txt)">Legal</strong><a href="../terminos.html">Términos y condiciones</a><a href="../privacidad.html">Política de privacidad</a><a href="../reembolsos.html">Política de reembolsos</a></div>
+<div><strong style="color:var(--txt)">Contacto</strong><a href="mailto:soporte@jcads.net">soporte@jcads.net</a><span>Dr. Juan Eulogio Estigarribia, Caaguazú, Paraguay</span></div>
+<div><strong style="color:var(--txt)">Comunidad</strong><a href="https://discord.gg/5cZBbPgEYw" target="_blank" rel="noopener">Discord</a><a href="https://www.tiktok.com/@jcads.net" target="_blank" rel="noopener">TikTok</a><a href="https://x.com/jcads_oficial" target="_blank" rel="noopener">X</a><a href="https://www.youtube.com/@jcads_oficial" target="_blank" rel="noopener">YouTube</a><a href="https://www.linkedin.com/in/jocia-peralta-322988446/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.instagram.com/jca.ds" target="_blank" rel="noopener">Instagram</a></div>
+</div><p class="copy">© 2026 JC ADS Red Publicitaria Digital · Titular: Jocia Alicio Peralta Florentin</p></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+<script src="tools.js"></script>
+<script>
+var qt=document.getElementById("qt"), go=document.getElementById("go");
+qt.oninput=function(){go.disabled=!qt.value.trim();};
+go.onclick=function(){
+  var text=qt.value.trim(), size=+document.getElementById("qs").value, fg=document.getElementById("qc").value, bg=document.getElementById("qb").value;
+  JCT.convert({title:"Generando tu código QR...",label:(text.length>60?text.slice(0,57)+"...":text)+"  →  QR",button:"Descargar QR (PNG)",work:async function(progress){
+    qrcode.stringToBytes=qrcode.stringToBytesFuncs["UTF-8"];
+    var qr=qrcode(0,"M"); qr.addData(text,"Byte");
+    try{qr.make();}catch(e){throw new Error("El texto es demasiado largo para un código QR. Probá con un texto más corto.");}
+    var n=qr.getModuleCount(), q=4, cell=Math.max(1,Math.floor(size/(n+2*q))), dim=cell*(n+2*q);
+    var c=document.createElement("canvas"); c.width=c.height=dim; var x=c.getContext("2d");
+    x.fillStyle=bg; x.fillRect(0,0,dim,dim); x.fillStyle=fg;
+    for(var r=0;r<n;r++)for(var k=0;k<n;k++)if(qr.isDark(r,k))x.fillRect((k+q)*cell,(r+q)*cell,cell,cell);
+    var blob=await JCT.canvasBlob(c,"image/png"); progress(1);
+    var pv=new Image(); pv.src=URL.createObjectURL(blob); pv.alt="Código QR";
+    return {blob:blob,filename:"codigo-qr.png",meta:"codigo-qr.png · "+dim+" × "+dim+" px",preview:pv};
+  }});
+};
+</script>
+<script async src="https://jcads.onrender.com/ads/jcads.js"></script>
+</body></html>

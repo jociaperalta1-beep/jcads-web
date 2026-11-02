@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Convertir JPG a PDF gratis: unir fotos en un PDF | JC ADS</title><meta name="description" content="Juntá varias fotos JPG o PNG en un solo PDF, una por página en tamaño A4. Gratis, sin registro y sin marca de agua. Todo en tu navegador.">
+<link rel="canonical" href="https://jcads.net/herramientas/jpg-a-pdf.html">
+<link rel="icon" type="image/png" href="../favicon.png"><link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="../herramientas/tools.css">
+<meta property="og:type" content="website"><meta property="og:site_name" content="JC ADS"><meta property="og:locale" content="es_ES">
+<meta property="og:title" content="Convertir JPG a PDF gratis: unir fotos en un PDF | JC ADS"><meta property="og:description" content="Juntá varias fotos JPG o PNG en un solo PDF, una por página en tamaño A4. Gratis, sin registro y sin marca de agua. Todo en tu navegador."><meta property="og:url" content="https://jcads.net/herramientas/jpg-a-pdf.html"><meta property="og:image" content="https://jcads.net/logo.png">
+<meta name="twitter:card" content="summary"><meta name="twitter:site" content="@jcads_oficial"><meta name="twitter:title" content="Convertir JPG a PDF gratis: unir fotos en un PDF | JC ADS"><meta name="twitter:description" content="Juntá varias fotos JPG o PNG en un solo PDF, una por página en tamaño A4. Gratis, sin registro y sin marca de agua. Todo en tu navegador."><meta name="twitter:image" content="https://jcads.net/logo.png">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebApplication", "name": "Convertir JPG a PDF", "url": "https://jcads.net/herramientas/jpg-a-pdf.html", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Cualquiera (navegador web)", "inLanguage": "es", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@type": "Organization", "name": "JC ADS", "url": "https://jcads.net/"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Cuántas fotos puedo juntar?", "acceptedAnswer": {"@type": "Answer", "text": "No hay un límite fijo. Depende de la memoria de tu dispositivo: en una computadora podés unir decenas de fotos; en un celular, conviene hacerlo de a 20 o 30."}}, {"@type": "Question", "name": "¿Se pierde calidad?", "acceptedAnswer": {"@type": "Answer", "text": "Las fotos se guardan con alta calidad. Si son muy grandes (más de 3000 píxeles de lado) se reducen un poco para que el PDF no pese demasiado."}}, {"@type": "Question", "name": "¿Sirve para escanear documentos con el celular?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. Sacá una foto a cada hoja, elegilas en orden y convertí. Vas a tener un único PDF listo para enviar por correo o WhatsApp."}}]}]</script>
+<script>if(location.search.indexOf("preview")>-1)document.documentElement.classList.add("preview")</script></head><body>
+<header><div class="nav"><a class="brand" href="../index.html"><img src="../logo.png" alt="JC ADS"><span class="brand-t"><b>JC ADS</b><small>Red Publicitaria Digital</small></span></a>
+<nav><a href="../index.html#servicios">Servicios</a><a href="../index.html#precios">Precios</a><a href="../blog/index.html">Blog</a><a href="index.html">Herramientas</a><a href="../musica/index.html">Música</a><a href="../contacto.html">Contacto</a><a class="btn" href="https://jcads.net/entrar">Ingresar</a></nav></div></header>
+<main><div class="tool">
+<p class="crumbs"><a href="../index.html">Inicio</a> › <a href="index.html">Herramientas</a> › JPG a PDF</p>
+<h1>Convertir JPG a PDF</h1>
+<p class="sub">Juntá una o varias fotos (JPG, PNG o WEBP) en un solo PDF, una imagen por página en tamaño A4.</p>
+<p class="privacy">🔒 Tus archivos no se suben a ningún servidor.</p>
+<div class="ad-box ad-top"><span class="ad-label">Publicidad</span><div class="jcads-ad" data-slot="4" style="width:728px;height:90px"></div></div>
+<section class="panel" id="panel">
+<div class="drop" id="drop" tabindex="0" role="button" aria-label="Elegir fotos">
+<button type="button" class="pick">+ Elegir fotos</button>
+<p>o arrastralo acá</p>
+<input type="file" id="file" accept=".jpg,.jpeg,.png,.webp" multiple>
+</div>
+<ul class="files" id="files"></ul><div class="opts"><label>Margen <select id="mrg"><option value="10" selected>Normal</option><option value="4">Pequeño</option><option value="0">Sin margen</option></select></label></div><button class="go" id="go" disabled>Convertir a PDF</button>
+<p class="err" id="err"></p>
+</section>
+<section class="wait" id="wait" hidden aria-live="polite">
+<h2 id="wtitle">Convirtiendo tu archivo...</h2>
+<p class="wname" id="wname"></p>
+<div class="bar" role="progressbar" aria-label="Progreso"><i id="bar"></i></div>
+<p class="wstat" id="wstat">0% · listo en 5 segundos</p>
+<div class="wads"><div class="ad-box"><span class="ad-label">Publicidad</span><div class="ad-frame" id="adWait"></div></div><div class="ad-box ad-mid"><span class="ad-label">Publicidad</span><div class="jcads-ad" data-slot="3" style="width:300px;height:250px"></div></div></div>
+<div class="ready" id="ready" hidden>
+<h3>¡Tu archivo está listo!</h3>
+<p class="meta" id="rmeta"></p>
+<div class="preview-img" id="rprev" hidden></div>
+<a class="dl" id="dl" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 19h16"/></svg><span id="dlt">Descargar</span></a><br>
+<button type="button" class="again" id="again">Convertir otro archivo</button>
+</div>
+<div class="ad-box ad-bottom"><span class="ad-label">Publicidad</span><div class="jcads-ad" data-slot="4" style="width:728px;height:90px"></div></div>
+</section>
+
+<section class="howto">
+<h2>Cómo pasar fotos JPG a PDF</h2>
+<ol><li>Tocá <strong>Elegir fotos</strong> (podés elegir varias a la vez) o arrastralas al recuadro.</li><li>Ordená las imágenes con las flechas ↑ ↓ y elegí el margen.</li><li>Tocá <strong>Convertir a PDF</strong> y descargá tu documento.</li></ol>
+<p>Cada foto ocupa una página A4 y se ajusta sola para entrar completa, sin recortes ni deformaciones. Las fotos horizontales se colocan en páginas apaisadas.</p>
+<h2>Preguntas frecuentes</h2>
+<h3>¿Cuántas fotos puedo juntar?</h3><p>No hay un límite fijo. Depende de la memoria de tu dispositivo: en una computadora podés unir decenas de fotos; en un celular, conviene hacerlo de a 20 o 30.</p><h3>¿Se pierde calidad?</h3><p>Las fotos se guardan con alta calidad. Si son muy grandes (más de 3000 píxeles de lado) se reducen un poco para que el PDF no pese demasiado.</p><h3>¿Sirve para escanear documentos con el celular?</h3><p>Sí. Sacá una foto a cada hoja, elegilas en orden y convertí. Vas a tener un único PDF listo para enviar por correo o WhatsApp.</p>
+<h2>Más herramientas gratis</h2>
+<div class="more-tools"><a href="excel-a-pdf.html">Excel a PDF</a><a href="word-a-pdf.html">Word a PDF</a><a href="comprimir-foto.html">Comprimir foto</a><a href="mp4-a-mp3.html">MP4 a MP3</a><a href="generador-qr.html">Generador QR</a><a href="unir-pdf.html">Unir PDF</a><a href="png-a-jpg.html">PNG a JPG</a><a href="contar-palabras.html">Contar palabras</a><a href="acortador.html">Acortador de links</a></div>
+</section>
+</div></main>
+<footer><div class="wrap"><div class="foot">
+<div><strong style="color:var(--txt)">JC ADS Red Publicitaria Digital</strong><p>Publicidad digital online para empresas y sitios web de todo el mundo.</p><a href="../blog/index.html">Blog</a><a href="index.html">Herramientas</a><a href="../musica/index.html">Música</a></div>
+<div><strong style="color:var(--txt)">Legal</strong><a href="../terminos.html">Términos y condiciones</a><a href="../privacidad.html">Política de privacidad</a><a href="../reembolsos.html">Política de reembolsos</a></div>
+<div><strong style="color:var(--txt)">Contacto</strong><a href="mailto:soporte@jcads.net">soporte@jcads.net</a><span>Dr. Juan Eulogio Estigarribia, Caaguazú, Paraguay</span></div>
+<div><strong style="color:var(--txt)">Comunidad</strong><a href="https://discord.gg/5cZBbPgEYw" target="_blank" rel="noopener">Discord</a><a href="https://www.tiktok.com/@jcads.net" target="_blank" rel="noopener">TikTok</a><a href="https://x.com/jcads_oficial" target="_blank" rel="noopener">X</a><a href="https://www.youtube.com/@jcads_oficial" target="_blank" rel="noopener">YouTube</a><a href="https://www.linkedin.com/in/jocia-peralta-322988446/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.instagram.com/jca.ds" target="_blank" rel="noopener">Instagram</a></div>
+</div><p class="copy">© 2026 JC ADS Red Publicitaria Digital · Titular: Jocia Alicio Peralta Florentin</p></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+<script src="tools.js"></script>
+<script>
+var S=JCT.dropzone({multiple:true,reorder:true,accept:/\.(jpe?g|png|webp)$/i,maxBytes:40*1048576,badMsg:"Elegí imágenes JPG, PNG o WEBP."});
+document.getElementById("go").onclick=function(){
+  var files=S.files.slice(), m=+document.getElementById("mrg").value;
+  JCT.convert({label:(files.length===1?files[0].name:files.length+" imágenes")+"  →  PDF",button:"Descargar PDF",work:async function(progress){
+    var jsPDF=window.jspdf.jsPDF, doc=null;
+    for(var i=0;i<files.length;i++){
+      var img=await JCT.loadImage(files[i]), w=img.naturalWidth, h=img.naturalHeight, k=Math.min(1,3000/Math.max(w,h));
+      var c=document.createElement("canvas"); c.width=Math.round(w*k); c.height=Math.round(h*k);
+      var x=c.getContext("2d"); x.fillStyle="#fff"; x.fillRect(0,0,c.width,c.height); x.drawImage(img,0,0,c.width,c.height);
+      var data=c.toDataURL("image/jpeg",.92), orient=w>h?"landscape":"portrait";
+      if(!doc)doc=new jsPDF({orientation:orient,unit:"mm",format:"a4"});else doc.addPage("a4",orient);
+      var pw=doc.internal.pageSize.getWidth(), ph=doc.internal.pageSize.getHeight(), s=Math.min((pw-2*m)/c.width,(ph-2*m)/c.height);
+      var iw=c.width*s, ih=c.height*s; doc.addImage(data,"JPEG",(pw-iw)/2,(ph-ih)/2,iw,ih);
+      progress((i+1)/files.length);
+    }
+    return {blob:doc.output("blob"),filename:(files.length===1?JCT.baseName(files[0].name):"fotos")+".pdf"};
+  }});
+};
+</script>
+<script async src="https://jcads.onrender.com/ads/jcads.js"></script>
+</body></html>
