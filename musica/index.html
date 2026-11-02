@@ -27,7 +27,16 @@
 <button type="submit" id="mbtn">Buscar</button>
 </form>
 <section class="m-card" id="mcard" aria-label="Reproductor">
+<div class="m-stage" id="mstage">
+<aside class="m-bible" id="mbible" hidden aria-label="Versículo bíblico">
+<div class="b-top">✝ SANTA BIBLIA</div>
+<div class="b-book"><div class="b-page b-left"><b class="b-ref" id="bref"></b><p class="b-txt" id="btl"></p></div><div class="b-page b-right"><p class="b-txt" id="btr"></p></div><div class="b-flip" id="bflip" aria-hidden="true"></div></div>
+<p class="sr-only" id="bfull" aria-live="polite"></p>
+<div class="b-marquee" aria-hidden="true"><div class="b-mq"><span>JC ADS · Red Publicitaria Digital · jcads.net · </span><span>JC ADS · Red Publicitaria Digital · jcads.net · </span></div></div>
+<p class="b-src">Reina-Valera 1909</p>
+</aside>
 <div class="m-player" id="mplayer"><div class="m-ph"><span class="m-ph-play" aria-hidden="true"></span><p>Elegí una canción de los resultados para escucharla acá</p></div></div>
+</div>
 <p class="m-ptitle" id="mptitle">Reproductor oficial de YouTube</p>
 </section>
 <section class="m-results" aria-live="polite">
@@ -103,6 +112,7 @@
     f.setAttribute("allowfullscreen",""); f.setAttribute("referrerpolicy","strict-origin-when-cross-origin");
     player.innerHTML=""; player.appendChild(f);
     ptitle.textContent=it.title+(it.channel?" — "+it.channel:"");
+    bible(isPraise(it));
     list.querySelectorAll(".m-item.on").forEach(function(x){x.classList.remove("on");});
     if(row)row.classList.add("on");
     card.scrollIntoView({behavior:"smooth",block:"start"});
@@ -124,6 +134,47 @@
       bt.onclick=function(){play(it,li);};
       li.appendChild(im); li.appendChild(tx); li.appendChild(heartBtn(it)); li.appendChild(bt); list.appendChild(li);
     });
+  }
+  /* Biblia: solo con canciones de alabanza (detección por palabras del título y del canal) */
+  var VERS=[{"r": "Juan 3:16", "t": "Porque de tal manera amó Dios al mundo, que ha dado á su Hijo unigénito, para que todo aquel que en él cree, no se pierda, mas tenga vida eterna."}, {"r": "Salmos 23:1", "t": "Jehová es mi pastor; nada me faltará."}, {"r": "Salmos 46:1", "t": "Dios es nuestro amparo y fortaleza, nuestro pronto auxilio en las tribulaciones."}, {"r": "Salmos 121:1-2", "t": "Alzaré mis ojos á los montes, de donde vendrá mi socorro. Mi socorro viene de Jehová, que hizo los cielos y la tierra."}, {"r": "Salmos 100:4", "t": "Entrad por sus puertas con reconocimiento, por sus atrios con alabanza: alabadle, bendecid su nombre."}, {"r": "Salmos 150:6", "t": "Todo lo que respira alabe á JAH. Aleluya."}, {"r": "Salmos 37:5", "t": "Encomienda á Jehová tu camino, y espera en él; y él hará."}, {"r": "Salmos 119:105", "t": "Lámpara es á mis pies tu palabra, y lumbrera á mi camino."}, {"r": "Salmos 34:8", "t": "Gustad, y ved que es bueno Jehová: dichoso el hombre que confiará en él."}, {"r": "Salmos 27:1", "t": "Jehová es mi luz y mi salvación: ¿de quién temeré? Jehová es la fortaleza de mi vida: ¿de quién he de atemorizarme?"}, {"r": "Isaías 41:10", "t": "No temas, que yo soy contigo; no desmayes, que yo soy tu Dios que te esfuerzo: siempre te ayudaré, siempre te sustentaré con la diestra de mi justicia."}, {"r": "Isaías 40:31", "t": "Mas los que esperan á Jehová tendrán nuevas fuerzas; levantarán las alas como águilas; correrán, y no se cansarán; caminarán, y no se fatigarán."}, {"r": "Jeremías 29:11", "t": "Porque yo sé los pensamientos que tengo acerca de vosotros, dice Jehová, pensamientos de paz, y no de mal, para daros el fin que esperáis."}, {"r": "Josué 1:9", "t": "Mira que te mando que te esfuerces y seas valiente: no temas ni desmayes, porque Jehová tu Dios será contigo en donde quiera que fueres."}, {"r": "Proverbios 3:5-6", "t": "Fíate de Jehová de todo tu corazón, y no estribes en tu prudencia. Reconócelo en todos tus caminos, y él enderezará tus veredas."}, {"r": "Mateo 11:28", "t": "Venid á mí todos los que estáis trabajados y cargados, que yo os haré descansar."}, {"r": "Mateo 6:33", "t": "Mas buscad primeramente el reino de Dios y su justicia, y todas estas cosas os serán añadidas."}, {"r": "Juan 14:6", "t": "Jesús le dice: Yo soy el camino, y la verdad, y la vida: nadie viene al Padre, sino por mí."}, {"r": "Juan 8:12", "t": "Y hablóles Jesús otra vez, diciendo: Yo soy la luz del mundo: el que me sigue, no andará en tinieblas, mas tendrá la lumbre de la vida."}, {"r": "Romanos 8:28", "t": "Y sabemos que á los que á Dios aman, todas las cosas les ayudan á bien, es á saber, á los que conforme al propósito son llamados."}, {"r": "1 Corintios 13:4", "t": "La caridad es sufrida, es benigna; la caridad no tiene envidia, la caridad no hace sinrazón, no se ensancha."}, {"r": "Filipenses 4:13", "t": "Todo lo puedo en Cristo que me fortalece."}, {"r": "Hebreos 13:8", "t": "Jesucristo es el mismo ayer, y hoy, y por los siglos."}, {"r": "1 Juan 4:19", "t": "Nosotros le amamos á él, porque él nos amó primero."}, {"r": "Lamentaciones 3:22-23", "t": "Es por la misericordia de Jehová que no somos consumidos, porque nunca decayeron sus misericordias. Nuevas son cada mañana; grande es tu fidelidad."}, {"r": "Sofonías 3:17", "t": "Jehová en medio de ti, poderoso, él salvará; gozaráse sobre ti con alegría, callará de amor, se regocijará sobre ti con cantar."}, {"r": "Efesios 2:8", "t": "Porque por gracia sois salvos por la fe; y esto no de vosotros, pues es don de Dios."}, {"r": "Apocalipsis 3:20", "t": "He aquí, yo estoy á la puerta y llamo: si alguno oyere mi voz y abriere la puerta, entraré á él, y cenaré con él, y él conmigo."}];
+  var bx=$("mbible"), stage=$("mstage"), bref=$("bref"), btl=$("btl"), btr=$("btr"), bflip=$("bflip"), bfull=$("bfull");
+  function norm(t){return (" "+(t||"")+" ").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g," ");}
+  var STRONG=["alabanza","alabanzas","adoracion","adoraciones","worship","cristiana","cristianas","cristiano","cristianos","musica cristiana","gospel","himno","himnos","himnario","jesus","jesucristo","espiritu santo","aleluya","hosanna","praise","christian","hillsong","altisimo","evangelica","evangelico","ministerio","iglesia","jehova","salmo","salmos","alabare","alabad","alabemos","adorare","adoremos","gloria a dios","cantos de fe","musica de dios","louvor","adoracao","gospel music"];
+  var WEAK=["dios","senor","cristo","santo","santos","cielo","gracia","fe","bendicion","milagro","cruz","padre","espiritu","amen","cordero","salvador","rey de reyes","oracion","pastor"];
+  var BLOCK=["reggaeton","perreo","explicit","explicito","narco","corrido tumbado","cumbia villera","twerk","sexy","borracho","cerveza"];
+  function has(n,w){return n.indexOf(" "+w+" ")>-1;}
+  function isPraise(it){
+    var n=norm((it.title||"")+" "+(it.channel||""));
+    if(BLOCK.some(function(w){return has(n,w);}))return false;
+    if(STRONG.some(function(w){return has(n,w);}))return true;
+    return WEAK.filter(function(w){return has(n,w);}).length>=2;
+  }
+  var bTimer=null, bOn=false, bLast=-1;
+  function bStop(){clearTimeout(bTimer);bTimer=null;}
+  function bType(el,txt,i,done){
+    if(!bOn)return;
+    el.textContent=txt.slice(0,i); el.classList.add("typing");
+    if(i<txt.length){bTimer=setTimeout(function(){bType(el,txt,i+1,done);},txt.charAt(i-1)===" "?60:38);}
+    else{el.classList.remove("typing");done();}
+  }
+  function bNext(){
+    if(!bOn)return;
+    var k; do{k=Math.floor(Math.random()*VERS.length);}while(VERS.length>1&&k===bLast); bLast=k;
+    var v=VERS[k], w=v.t.split(" "), half=Math.ceil(v.t.length*0.5), a="", i=0;
+    while(i<w.length&&(a+w[i]).length<=half){a+=(a?" ":"")+w[i];i++;}
+    var b=w.slice(i).join(" ");
+    bref.textContent=v.r; btl.textContent=""; btr.textContent=""; bfull.textContent=v.t+" ("+v.r+")";
+    bType(btl,a,1,function(){bType(btr,b,1,function(){bTimer=setTimeout(bFlip,9000);});});
+  }
+  function bFlip(){
+    if(!bOn)return;
+    bflip.classList.remove("go"); void bflip.offsetWidth; bflip.classList.add("go");
+    bTimer=setTimeout(function(){btl.textContent="";btr.textContent="";bref.textContent="";},450);
+    bTimer=setTimeout(bNext,950);
+  }
+  function bible(on){
+    bStop(); bOn=on; bx.hidden=!on; stage.classList.toggle("with-bible",on);
+    if(on)bNext();
   }
   /* Favoritas: guardadas en este navegador (localStorage) */
   var FK="jcads_musica_favs", flist=$("mflist"), fempty=$("mfempty"), fcount=$("mfcount");
