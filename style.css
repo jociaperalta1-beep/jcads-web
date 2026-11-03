@@ -158,3 +158,52 @@ section>.wrap>h2::after{content:"";display:block;width:70px;height:4px;border-ra
 .langlist a:hover{background:#17305e}
 .langlist a.on{background:#22d3ee;color:#04122b!important}
 @media(max-width:900px){.langlist{right:auto;left:50%;transform:translateX(-50%)}}
+/* header compacto en una sola fila (2026-11-02) */
+@media(min-width:1101px){
+nav{max-width:1400px;min-height:96px;padding:10px 28px;flex-wrap:nowrap;gap:24px}
+.brand{gap:12px;flex-shrink:0}
+.brand img{width:72px;height:72px}
+.brand-t b{font-size:1.9rem}
+.brand-t small{font-size:.8rem;letter-spacing:1.2px;margin-top:4px}
+nav nav{gap:20px;flex-wrap:nowrap;justify-content:flex-end}
+nav nav a{font-size:.98rem;white-space:nowrap}
+nav nav .btn{padding:10px 22px;font-size:.98rem}
+}
+@media(min-width:1101px) and (max-width:1300px){
+.brand img{width:60px;height:60px}
+.brand-t b{font-size:1.6rem}
+.brand-t small{font-size:.7rem}
+nav nav{gap:14px}
+nav nav a{font-size:.92rem}
+}
+
+/* Botón "Volver" unificado (pill) — todas las páginas (2026-11-02) */
+a.back-top{display:inline-flex;align-items:center;gap:8px;max-width:100%;box-sizing:border-box;margin:16px 0 14px;padding:8px 18px 8px 12px;border:1px solid rgba(34,211,238,.55);border-radius:999px;background:rgba(13,26,54,.65);color:#e6f0ff!important;text-decoration:none!important;font-weight:600;font-size:.92rem;line-height:1.25;white-space:normal;text-align:left;transition:border-color .2s,background .2s,box-shadow .2s}
+a.back-top svg{width:16px;height:16px;flex:0 0 auto;color:#22d3ee;transition:transform .2s}
+a.back-top:hover,a.back-top:focus-visible{border-color:#22d3ee;background:rgba(34,211,238,.1);box-shadow:0 0 0 3px rgba(34,211,238,.12),0 0 18px rgba(34,211,238,.35);outline:none}
+a.back-top:hover svg{transform:translateX(-3px)}
+a.back-top::after{display:none!important}
+.back-wrap{text-align:left}
+.back-wrap+section{padding-top:18px}
+.legal>a.back-top:first-child+h1{margin-top:18px}
+.tool>a.back-top:first-child{margin-top:-14px}
+.post>a.back-top:first-child{margin-top:-20px}
+.back-end-wrap{margin:32px 0 8px;text-align:center}
+a.back-top.back-end{margin-top:22px}
+@media(max-width:640px){.tool>a.back-top:first-child{margin-top:-4px}.post>a.back-top:first-child{margin-top:-8px}a.back-top{font-size:.88rem}}
+
+/* Header: corrección de selectores del bloque "una sola fila" (.nav = contenedor, .nav nav = menú) */
+@media(min-width:1101px){
+.nav{max-width:1400px;min-height:96px;padding:10px 28px;flex-wrap:nowrap;gap:24px}
+.nav>nav{max-width:none;min-height:0;padding:0;gap:20px;flex-wrap:nowrap;justify-content:flex-end}
+.nav>nav a{font-size:.98rem;white-space:nowrap}
+.nav>nav .btn{padding:10px 22px;font-size:.98rem}
+}
+@media(min-width:1101px) and (max-width:1300px){
+.nav{padding:10px 18px;gap:16px}
+.nav>nav{gap:13px}
+.nav>nav a{font-size:.88rem}
+.nav>nav .btn{padding:9px 16px;font-size:.88rem}
+.langdd summary{padding:6px 11px}
+}
+@media(max-width:1100px){.nav{justify-content:center}.nav>nav{justify-content:center}}

@@ -133,3 +133,8 @@ a.f-lic:hover{background:rgba(34,197,94,.28)}
 .b-src{margin:5px 0 0;text-align:right;color:#c9a46a;font-size:.7rem}
 @media(max-width:900px){.m-stage.with-bible{display:flex;flex-direction:column}.m-stage.with-bible .m-bible{order:2;width:100%}.m-player{width:100%}}
 @media(prefers-reduced-motion:reduce){.b-mq,.b-flip.go{animation:none}}
+
+/* fluidez del video (2026-11-02) */
+header{-webkit-backdrop-filter:none!important;backdrop-filter:none!important;background:#071331!important}
+#mbible{contain:layout paint}
+.m-player iframe,#mplayer iframe{transform:translateZ(0)}

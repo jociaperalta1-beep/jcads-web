@@ -59,3 +59,11 @@ img{max-width:100%;height:auto}
 @media(max-width:640px){.post{padding-top:24px}.post-cta{padding:22px 16px}.post-cta .btn{width:100%;text-align:center}}
 /* Si jcads.js no tiene anuncio para el espacio, lo oculta: ocultamos también la etiqueta */
 .ad-box:has(> .jcads-ad[style*="display: none"]),.ad-box:has(> .jcads-ad[style*="display:none"]){display:none}
+
+.post-nav{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:28px 0 6px}
+.pn{display:block;padding:16px 18px;border:1px solid rgba(255,255,255,.18);border-radius:14px;text-decoration:none;background:rgba(255,255,255,.05);color:var(--txt);min-width:0}
+.pn:hover{background:rgba(255,255,255,.12)}
+.pn small{display:block;color:var(--mut);font-size:.82rem;margin-bottom:6px;font-weight:700}
+.pn b{display:block;line-height:1.35;overflow-wrap:anywhere}
+.pn.next{text-align:right}
+@media(max-width:600px){.post-nav{grid-template-columns:1fr}.pn.next{text-align:left}}
