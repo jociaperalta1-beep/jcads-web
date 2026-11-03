@@ -113,18 +113,28 @@
     var d; try{d=typeof e.data==="string"?JSON.parse(e.data):e.data;}catch(x){return;}
     if(!d)return;
     var s=d.event==="onStateChange"?d.info:(d.event==="infoDelivery"&&d.info?d.info.playerState:null);
+    if(d.event==="onReady"||d.event==="initialDelivery"||d.event==="infoDelivery")curF._ready=true;
+    if(d.event==="onError"&&!ended){ended=true;setTimeout(playNext,600);return;}
     if(s===0&&!ended){ended=true;playNext();}
   });
   function play(it,row,qu,qi,auto){
     if(qu){QU=qu;QI=qi;}else{QU=[];QI=-1;} ended=false;
+    /* Misma ventana del reproductor: sigue sonando aunque estés en otra pestaña o la pantalla esté apagada */
+    if(auto&&curF&&curF._ready&&curF.isConnected){
+      try{curF.contentWindow.postMessage(JSON.stringify({event:"command",func:"loadVideoById",args:[it.id],id:1,channel:"widget"}),"*");
+        curF.title="Reproductor de YouTube: "+it.title; after(it,row,auto); return;}catch(x){}
+    }
     var f=document.createElement("iframe");
     f.src="https://www.youtube-nocookie.com/embed/"+encodeURIComponent(it.id)+"?autoplay=1&playsinline=1&rel=0&enablejsapi=1&origin="+encodeURIComponent(location.origin);
-    f.onload=function(){var w=f.contentWindow,k=0;(function hi(){if(curF!==f||k++>6)return;try{w.postMessage(JSON.stringify({event:"listening",id:1,channel:"widget"}),"*");w.postMessage(JSON.stringify({event:"command",func:"addEventListener",args:["onStateChange"],id:1,channel:"widget"}),"*");}catch(x){}setTimeout(hi,1000);})();};
+    f.onload=function(){var w=f.contentWindow,k=0;(function hi(){if(curF!==f||k++>6)return;try{w.postMessage(JSON.stringify({event:"listening",id:1,channel:"widget"}),"*");w.postMessage(JSON.stringify({event:"command",func:"addEventListener",args:["onStateChange"],id:1,channel:"widget"}),"*");w.postMessage(JSON.stringify({event:"command",func:"addEventListener",args:["onError"],id:1,channel:"widget"}),"*");}catch(x){}setTimeout(hi,1000);})();};
     curF=f;
     f.title="Reproductor de YouTube: "+it.title;
     f.setAttribute("allow","autoplay; encrypted-media; picture-in-picture; fullscreen");
     f.setAttribute("allowfullscreen",""); f.setAttribute("referrerpolicy","strict-origin-when-cross-origin");
     player.innerHTML=""; player.appendChild(f);
+    after(it,row,auto);
+  }
+  function after(it,row,auto){
     ptitle.textContent=it.title+(it.channel?" — "+it.channel:"");
     bible(isPraise(it),it);
     list.querySelectorAll(".m-item.on").forEach(function(x){x.classList.remove("on");});
