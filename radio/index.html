@@ -84,6 +84,14 @@
 .mini .rd-name{font-size:1.15rem;margin-top:10px}
 
 .rd [hidden]{display:none!important}
+
+.rd-list .fv{background:none;border:0;cursor:pointer;color:#ff6b9a;font-size:1.45rem;line-height:1;width:34px;height:38px;flex:0 0 34px;padding:0}
+.rd-list .fv.on{color:#ff3d7f}
+.rd-ctrl .fvnow{font-size:2rem;line-height:1;color:#ff6b9a;padding:0}
+.rd-ctrl .fvnow.on{color:#ff3d7f}
+.rd-ctrl .fvnow:disabled{opacity:.35;cursor:default}
+.rd-chips button[data-v="#fav"]{background:#3a1430;color:#ff8fb5}
+.rd-chips button[data-v="#fav"].on{background:#ff3d7f;color:#fff}
 </style>
 <script src="../i18n.js" defer></script></head><body>
 <header><div class="nav"><a class="brand" href="../index.html"><img src="../logo.png" alt="JC ADS"><span class="brand-t"><b>JC ADS</b><small>Red Publicitaria Digital</small></span></a>
@@ -141,14 +149,14 @@
 <script>(function(){
 "use strict";
 var T={
-es:{h1:"Radio mundial en vivo",sub:"Más de 60.000 radios de 226 países · gratis · sin registro",mini:"Abrir en ventanita: sigue sonando",world:"Radio sonido a tu oído",worldSub:"Música, noticias, deportes",phW:"País, ciudad o estilo…",auto:"Búsqueda automática mientras escribís",live:"EN VIVO",pick:"Elegí una radio",vol:"Volumen",chr:"Radios cristianas JC ADS",chrSub:"Elegí el idioma · alabanza y adoración",phC:"Buscar radio cristiana…",ad:"Publicidad",note:"Las radios transmiten su propia señal oficial en vivo; cada emisora es responsable de sus derechos. Datos de estaciones: Radio Browser (radio-browser.info).",listening:"Escuchando",now:"Ahora",from:"en vivo desde",loading:"Buscando radios…",none:"No encontré radios con esa búsqueda. Probá con otra palabra.",fail:"Esta radio no responde ahora. Probá con otra.",net:"No se pudo cargar la lista. Revisá tu conexión.",popup:"Tu navegador bloqueó la ventanita. Permití ventanas emergentes para jcads.net.",radio:"radio",title:"Radio mundial en vivo gratis: radios del mundo y cristianas | JC ADS",
- chipsW:[["🌍 Todo el mundo",""]].concat(["US","GB","BR","ES","MX","AR","FR","IT","DE","JP","KR","IN","NG","CO","PY"].map(function(c){var n=c;try{n=new Intl.DisplayNames(["es"],{type:"region"}).of(c)}catch(e){}return[n,c]})).concat([["Noticias","#news"],["Pop","#pop"],["Rock","#rock"],["Jazz","#jazz"]])},
-en:{h1:"World radio, live",sub:"More than 60,000 stations from 226 countries · free · no sign-up",mini:"Open mini player: keeps playing",world:"Radio: Sound to Your Ears",worldSub:"Music, news, sports",phW:"Country, city or style…",auto:"Search starts as you type",live:"LIVE",pick:"Pick a station",vol:"Volume",chr:"JC ADS Christian Radio",chrSub:"Choose a language · praise and worship",phC:"Search Christian radio…",ad:"Advertisement",note:"Stations stream their own official live signal; each broadcaster is responsible for its rights. Station data: Radio Browser (radio-browser.info).",listening:"Now playing",now:"Now",from:"live from",loading:"Finding stations…",none:"No stations found. Try another word.",fail:"This station isn't responding right now. Try another one.",net:"Couldn't load the list. Check your connection.",popup:"Your browser blocked the mini player. Allow pop-ups for jcads.net.",radio:"radio",title:"Free live world radio: stations worldwide and Christian radio | JC ADS",
- chipsW:[["🌍 Whole world",""]].concat(["US","GB","BR","ES","MX","AR","FR","IT","DE","JP","KR","IN","NG","CO","PY"].map(function(c){var n=c;try{n=new Intl.DisplayNames(["en"],{type:"region"}).of(c)}catch(e){}return[n,c]})).concat([["News","#news"],["Pop","#pop"],["Rock","#rock"],["Jazz","#jazz"]])},
-pt:{h1:"Rádio mundial ao vivo",sub:"Mais de 60.000 rádios de 226 países · grátis · sem cadastro",mini:"Abrir em janelinha: continua tocando",world:"Rádio som aos seus ouvidos",worldSub:"Música, notícias, esportes",phW:"País, cidade ou estilo…",auto:"Busca automática enquanto você digita",live:"AO VIVO",pick:"Escolha uma rádio",vol:"Volume",chr:"Rádios cristãs JC ADS",chrSub:"Escolha o idioma · louvor e adoração",phC:"Buscar rádio cristã…",ad:"Publicidade",note:"As rádios transmitem o próprio sinal oficial ao vivo; cada emissora é responsável pelos seus direitos. Dados das estações: Radio Browser (radio-browser.info).",listening:"Tocando",now:"Agora",from:"ao vivo de",loading:"Buscando rádios…",none:"Nenhuma rádio encontrada. Tente outra palavra.",fail:"Esta rádio não responde agora. Tente outra.",net:"Não foi possível carregar a lista. Verifique sua conexão.",popup:"Seu navegador bloqueou a janelinha. Permita pop-ups para jcads.net.",radio:"rádio",title:"Rádio mundial ao vivo grátis: rádios do mundo e cristãs | JC ADS",
- chipsW:[["🌍 Mundo todo",""]].concat(["US","GB","BR","ES","MX","AR","FR","IT","DE","JP","KR","IN","NG","CO","PY"].map(function(c){var n=c;try{n=new Intl.DisplayNames(["pt"],{type:"region"}).of(c)}catch(e){}return[n,c]})).concat([["Notícias","#news"],["Pop","#pop"],["Rock","#rock"],["Jazz","#jazz"]])},
-de:{h1:"Weltradio live",sub:"Über 60.000 Sender aus 226 Ländern · kostenlos · ohne Anmeldung",mini:"Im Mini-Fenster öffnen: spielt weiter",world:"Radio: Klang für deine Ohren",worldSub:"Musik, Nachrichten, Sport",phW:"Land, Stadt oder Stil…",auto:"Suche startet beim Tippen",live:"LIVE",pick:"Wähle einen Sender",vol:"Lautstärke",chr:"Christliche Radios JC ADS",chrSub:"Sprache wählen · Lobpreis und Anbetung",phC:"Christliches Radio suchen…",ad:"Werbung",note:"Die Sender übertragen ihr eigenes offizielles Live-Signal; jeder Sender ist für seine Rechte verantwortlich. Senderdaten: Radio Browser (radio-browser.info).",listening:"Es läuft",now:"Jetzt",from:"live aus",loading:"Sender werden gesucht…",none:"Keine Sender gefunden. Versuch ein anderes Wort.",fail:"Dieser Sender antwortet gerade nicht. Versuch einen anderen.",net:"Liste konnte nicht geladen werden. Prüfe deine Verbindung.",popup:"Dein Browser hat das Mini-Fenster blockiert. Erlaube Pop-ups für jcads.net.",radio:"Radio",title:"Weltradio live kostenlos: Sender weltweit und christliche Radios | JC ADS",
- chipsW:[["🌍 Ganze Welt",""]].concat(["US","GB","BR","ES","MX","AR","FR","IT","DE","JP","KR","IN","NG","CO","PY"].map(function(c){var n=c;try{n=new Intl.DisplayNames(["de"],{type:"region"}).of(c)}catch(e){}return[n,c]})).concat([["Nachrichten","#news"],["Pop","#pop"],["Rock","#rock"],["Jazz","#jazz"]])}
+es:{favChip:"♥ Mis favoritas",favT:"Mis favoritas",favNone:"Todavía no tenés favoritas. Tocá el ♡ de una radio y se guarda en tu celular.",h1:"Radio mundial en vivo",sub:"Más de 60.000 radios de 226 países · gratis · sin registro",mini:"Abrir en ventanita: sigue sonando",world:"Radio sonido a tu oído",worldSub:"Música, noticias, deportes",phW:"País, ciudad o estilo…",auto:"Búsqueda automática mientras escribís",live:"EN VIVO",pick:"Elegí una radio",vol:"Volumen",chr:"Radios cristianas JC ADS",chrSub:"Elegí el idioma · alabanza y adoración",phC:"Buscar radio cristiana…",ad:"Publicidad",note:"Las radios transmiten su propia señal oficial en vivo; cada emisora es responsable de sus derechos. Datos de estaciones: Radio Browser (radio-browser.info).",listening:"Escuchando",now:"Ahora",from:"en vivo desde",loading:"Buscando radios…",none:"No encontré radios con esa búsqueda. Probá con otra palabra.",fail:"Esta radio no responde ahora. Probá con otra.",net:"No se pudo cargar la lista. Revisá tu conexión.",popup:"Tu navegador bloqueó la ventanita. Permití ventanas emergentes para jcads.net.",radio:"radio",title:"Radio mundial en vivo gratis: radios del mundo y cristianas | JC ADS",
+ chipsW:[["🌍 Todo el mundo",""],["♥ Mis favoritas","#fav"]].concat(["US","GB","BR","ES","MX","AR","FR","IT","DE","JP","KR","IN","NG","CO","PY"].map(function(c){var n=c;try{n=new Intl.DisplayNames(["es"],{type:"region"}).of(c)}catch(e){}return[n,c]})).concat([["Noticias","#news"],["Pop","#pop"],["Rock","#rock"],["Jazz","#jazz"]])},
+en:{favChip:"♥ My favorites",favT:"My favorites",favNone:"No favorites yet. Tap the ♡ on a station and it's saved on your phone.",h1:"World radio, live",sub:"More than 60,000 stations from 226 countries · free · no sign-up",mini:"Open mini player: keeps playing",world:"Radio: Sound to Your Ears",worldSub:"Music, news, sports",phW:"Country, city or style…",auto:"Search starts as you type",live:"LIVE",pick:"Pick a station",vol:"Volume",chr:"JC ADS Christian Radio",chrSub:"Choose a language · praise and worship",phC:"Search Christian radio…",ad:"Advertisement",note:"Stations stream their own official live signal; each broadcaster is responsible for its rights. Station data: Radio Browser (radio-browser.info).",listening:"Now playing",now:"Now",from:"live from",loading:"Finding stations…",none:"No stations found. Try another word.",fail:"This station isn't responding right now. Try another one.",net:"Couldn't load the list. Check your connection.",popup:"Your browser blocked the mini player. Allow pop-ups for jcads.net.",radio:"radio",title:"Free live world radio: stations worldwide and Christian radio | JC ADS",
+ chipsW:[["🌍 Whole world",""],["♥ My favorites","#fav"]].concat(["US","GB","BR","ES","MX","AR","FR","IT","DE","JP","KR","IN","NG","CO","PY"].map(function(c){var n=c;try{n=new Intl.DisplayNames(["en"],{type:"region"}).of(c)}catch(e){}return[n,c]})).concat([["News","#news"],["Pop","#pop"],["Rock","#rock"],["Jazz","#jazz"]])},
+pt:{favChip:"♥ Minhas favoritas",favT:"Minhas favoritas",favNone:"Você ainda não tem favoritas. Toque no ♡ de uma rádio e ela fica salva no seu celular.",h1:"Rádio mundial ao vivo",sub:"Mais de 60.000 rádios de 226 países · grátis · sem cadastro",mini:"Abrir em janelinha: continua tocando",world:"Rádio som aos seus ouvidos",worldSub:"Música, notícias, esportes",phW:"País, cidade ou estilo…",auto:"Busca automática enquanto você digita",live:"AO VIVO",pick:"Escolha uma rádio",vol:"Volume",chr:"Rádios cristãs JC ADS",chrSub:"Escolha o idioma · louvor e adoração",phC:"Buscar rádio cristã…",ad:"Publicidade",note:"As rádios transmitem o próprio sinal oficial ao vivo; cada emissora é responsável pelos seus direitos. Dados das estações: Radio Browser (radio-browser.info).",listening:"Tocando",now:"Agora",from:"ao vivo de",loading:"Buscando rádios…",none:"Nenhuma rádio encontrada. Tente outra palavra.",fail:"Esta rádio não responde agora. Tente outra.",net:"Não foi possível carregar a lista. Verifique sua conexão.",popup:"Seu navegador bloqueou a janelinha. Permita pop-ups para jcads.net.",radio:"rádio",title:"Rádio mundial ao vivo grátis: rádios do mundo e cristãs | JC ADS",
+ chipsW:[["🌍 Mundo todo",""],["♥ Minhas favoritas","#fav"]].concat(["US","GB","BR","ES","MX","AR","FR","IT","DE","JP","KR","IN","NG","CO","PY"].map(function(c){var n=c;try{n=new Intl.DisplayNames(["pt"],{type:"region"}).of(c)}catch(e){}return[n,c]})).concat([["Notícias","#news"],["Pop","#pop"],["Rock","#rock"],["Jazz","#jazz"]])},
+de:{favChip:"♥ Meine Favoriten",favT:"Meine Favoriten",favNone:"Noch keine Favoriten. Tippe auf das ♡ bei einem Sender, er wird auf deinem Handy gespeichert.",h1:"Weltradio live",sub:"Über 60.000 Sender aus 226 Ländern · kostenlos · ohne Anmeldung",mini:"Im Mini-Fenster öffnen: spielt weiter",world:"Radio: Klang für deine Ohren",worldSub:"Musik, Nachrichten, Sport",phW:"Land, Stadt oder Stil…",auto:"Suche startet beim Tippen",live:"LIVE",pick:"Wähle einen Sender",vol:"Lautstärke",chr:"Christliche Radios JC ADS",chrSub:"Sprache wählen · Lobpreis und Anbetung",phC:"Christliches Radio suchen…",ad:"Werbung",note:"Die Sender übertragen ihr eigenes offizielles Live-Signal; jeder Sender ist für seine Rechte verantwortlich. Senderdaten: Radio Browser (radio-browser.info).",listening:"Es läuft",now:"Jetzt",from:"live aus",loading:"Sender werden gesucht…",none:"Keine Sender gefunden. Versuch ein anderes Wort.",fail:"Dieser Sender antwortet gerade nicht. Versuch einen anderen.",net:"Liste konnte nicht geladen werden. Prüfe deine Verbindung.",popup:"Dein Browser hat das Mini-Fenster blockiert. Erlaube Pop-ups für jcads.net.",radio:"Radio",title:"Weltradio live kostenlos: Sender weltweit und christliche Radios | JC ADS",
+ chipsW:[["🌍 Ganze Welt",""],["♥ Meine Favoriten","#fav"]].concat(["US","GB","BR","ES","MX","AR","FR","IT","DE","JP","KR","IN","NG","CO","PY"].map(function(c){var n=c;try{n=new Intl.DisplayNames(["de"],{type:"region"}).of(c)}catch(e){}return[n,c]})).concat([["Nachrichten","#news"],["Pop","#pop"],["Rock","#rock"],["Jazz","#jazz"]])}
 };
 var CHR={ /* idioma -> búsquedas de radios cristianas */
  es:{label:"Español",q:[["tag","cristiana"],["tag","christian","spanish"],["tag","evangelica"],["tag","alabanza"],["tag","cristiano"]]},
@@ -208,6 +216,19 @@ function clean(arr,max){
  return out.slice(0,max||40);
 }
 
+/* favoritas: se guardan en el celular (localStorage) */
+var FK="jcads_radio_favs", FAV=[];
+try{FAV=JSON.parse(localStorage.getItem(FK)||"[]")||[]}catch(e){FAV=[]}
+function isFav(s){return !!s&&FAV.some(function(f){return f.stationuuid===s.stationuuid})}
+function saveFav(){try{localStorage.setItem(FK,JSON.stringify(FAV))}catch(e){}}
+function toggleFav(s){
+ if(!s) return;
+ if(isFav(s)) FAV=FAV.filter(function(f){return f.stationuuid!==s.stationuuid});
+ else FAV.unshift({stationuuid:s.stationuuid,name:s.name,url_resolved:s.url_resolved,favicon:s.favicon,countrycode:s.countrycode,country:s.country,state:s.state,tags:s.tags,bitrate:s.bitrate});
+ saveFav(); if(favMode){lists.W=FAV.slice();} draw("W"); draw("C"); favBtn();
+}
+var favMode=false;
+function favBtn(){var b=$("favNow"); if(!b) return; var on=isFav(cur); b.classList.toggle("on",on); b.textContent=on?"♥":"♡"; b.disabled=!cur;}
 /* listas */
 var lists={W:[],C:[]}, cur=null, curList="W", curIdx=-1;
 var COUNTRY={};
@@ -219,12 +240,12 @@ function esc(x){return String(x).replace(/[&<>"]/g,function(c){return{"&":"&amp;
 function draw(which){
  var ul=$("list"+which), arr=lists[which];
  if(arr===null){ul.innerHTML='<li class="msg">'+esc(t.net)+'</li>';return;}
- if(!arr.length){ul.innerHTML='<li class="msg">'+esc(t.none)+'</li>';return;}
+ if(!arr.length){ul.innerHTML='<li class="msg">'+esc(which==="W"&&favMode?t.favNone:t.none)+'</li>';return;}
  ul.innerHTML=arr.map(function(s,i){
   var ini=esc((s.name||"?").trim().charAt(0).toUpperCase());
   var ic=s.favicon&&/^https:/.test(s.favicon)?'<img src="'+esc(s.favicon)+'" alt="" loading="lazy" onerror="this.outerHTML=\'<span class=ph>'+ini+'</span>\'">':'<span class="ph">'+ini+'</span>';
   var on=cur&&cur.stationuuid===s.stationuuid;
-  return '<li data-i="'+i+'"'+(on?' class="on"':'')+'>'+ic+'<div class="tx"><b>'+esc(s.name.trim())+'</b><small>'+esc(cname(s))+(tagsOf(s)?' · '+esc(tagsOf(s)):'')+'</small></div><span class="pb">'+(on&&playing?'❚❚':'▶')+'</span></li>';
+  return '<li data-i="'+i+'"'+(on?' class="on"':'')+'>'+ic+'<div class="tx"><b>'+esc(s.name.trim())+'</b><small>'+esc(cname(s))+(tagsOf(s)?' · '+esc(tagsOf(s)):'')+'</small></div><button type="button" class="fv'+(isFav(s)?' on':'')+'" aria-label="'+esc(t.favT)+'">'+(isFav(s)?'♥':'♡')+'</button><span class="pb">'+(on&&playing?'❚❚':'▶')+'</span></li>';
  }).join("");
 }
 function loading(which){$("list"+which).innerHTML='<li class="msg">'+esc(t.loading)+'</li>';}
@@ -232,6 +253,7 @@ function loading(which){$("list"+which).innerHTML='<li class="msg">'+esc(t.loadi
  $("list"+w).addEventListener("click",function(e){
   var li=e.target.closest("li[data-i]"); if(!li) return;
   var i=+li.getAttribute("data-i"), s=lists[w][i];
+  if(e.target.closest(".fv")){e.stopPropagation(); toggleFav(s); return;}
   if(cur&&cur.stationuuid===s.stationuuid){toggle();return;}
   play(w,i);
  });
@@ -240,7 +262,9 @@ function loading(which){$("list"+which).innerHTML='<li class="msg">'+esc(t.loadi
 /* mundo */
 var wSeq=0;
 function loadWorld(q,chip){
- var my=++wSeq; loading("W");
+ var my=++wSeq;
+ favMode=chip==="#fav"; if(favMode){lists.W=FAV.slice(); draw("W"); return;}
+ loading("W");
  var jobs;
  if(chip&&chip.charAt(0)==="#") jobs=[search({tag:chip.slice(1)},60)];
  else if(chip) jobs=[search({countrycode:chip},60)];
@@ -295,6 +319,7 @@ function setPlaying(p){
  draw("W"); draw("C");
 }
 function info(s){
+ setTimeout(favBtn,0);
  $("nowName").textContent=s.name.trim();
  var tg=tagsOf(s)||t.radio, w=where(s);
  $("nowInfo").textContent=t.now+": "+tg+(w?" · "+t.from+" "+w:"")+(s.bitrate?" · "+s.bitrate+" kbps":"");
@@ -321,7 +346,8 @@ function step(d){
  var arr=lists[curList]; if(!arr||!arr.length) return;
  var i=curIdx<0?0:(curIdx+d+arr.length)%arr.length; play(curList,i);
 }
-$("play").onclick=toggle; $("prev").onclick=function(){step(-1)}; $("next").onclick=function(){step(1)};
+$("play").onclick=toggle;
+(function(){var b=document.createElement("button");b.type="button";b.id="favNow";b.className="fvnow";b.setAttribute("aria-label",t.favT);b.textContent="♡";b.disabled=true;b.onclick=function(){toggleFav(cur)};$("next").after(b);})(); $("prev").onclick=function(){step(-1)}; $("next").onclick=function(){step(1)};
 $("vol").oninput=function(){audio.volume=+this.value};
 audio.addEventListener("error",function(){ if(playing||audio.src){ setPlaying(false); $("err").textContent=t.fail; }});
 if("mediaSession" in navigator){try{
