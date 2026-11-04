@@ -63,6 +63,7 @@
 <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.2/dist/jspdf.plugin.autotable.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
 <script>
 /* JC ADS - Excel a PDF manteniendo el diseño (celdas combinadas, bordes, colores, anchos, imágenes) */
 var XLStyled = (function () {
@@ -257,6 +258,12 @@ var XLStyled = (function () {
             ih = by + ((br.nativeRowOff || 0) / 12700) * sc - iy;
           } else if (im.range.ext) { iw = im.range.ext.width * 0.75 * sc; ih = im.range.ext.height * 0.75 * sc; }
           if (!(iw > 0 && ih > 0)) return;
+          var fx = FIX[ws.name + "|" + imKey(im)];
+          if (fx && fx.url) {
+            var ca = Math.abs(Math.cos(fx.a)), sa = Math.abs(Math.sin(fx.a)), cxm = ix + iw / 2, cym = iy + ih / 2, bw = iw * ca + ih * sa, bh = iw * sa + ih * ca;
+            doc.addImage(fx.url, fx.fmt, cxm - bw / 2, cym - bh / 2, bw, bh);
+            return;
+          }
           var media = wb.getImage(+im.imageId), ext = String(media.extension || "png").toLowerCase();
           if (ext !== "png" && ext !== "jpeg" && ext !== "jpg") return;
           var data = media.base64 ? media.base64.replace(/^data:[^,]*,/, "") : b64(media.buffer);
@@ -267,9 +274,73 @@ var XLStyled = (function () {
     return true;
   }
 
+  /* Giro y espejo de imágenes: Excel guarda la imagen original y aparte dice "rotar/voltear"; lo aplicamos acá */
+  var FIX = {};
+  function imKey(im) { var t = im.range && im.range.tl || {}; return (t.nativeCol != null ? t.nativeCol : Math.floor(t.col || 0)) + ":" + (t.nativeRow != null ? t.nativeRow : Math.floor(t.row || 0)) + ":" + (t.nativeColOff || 0) + ":" + (t.nativeRowOff || 0); }
+  function rel(base, target) { if (target.charAt(0) === "/") return target.slice(1); var p = base.split("/"); p.pop(); target.split("/").forEach(function (x) { if (x === "..") p.pop(); else if (x !== ".") p.push(x); }); return p.join("/"); }
+  function attr(tag, n) { var m = new RegExp("\\b" + n + "=\"([^\"]*)\"").exec(tag); return m ? m[1] : null; }
+  async function readTransforms(buf, JSZip) {
+    var out = {}; if (!JSZip) return out;
+    var z = await JSZip.loadAsync(buf), rd = async function (f) { var e = z.file(f); return e ? await e.async("string") : ""; };
+    var wbx = await rd("xl/workbook.xml"), wbr = await rd("xl/_rels/workbook.xml.rels");
+    var rels = function (x) { var o = {}; (x.match(/<Relationship\b[^>]*>/g) || []).forEach(function (t) { o[attr(t, "Id")] = { t: attr(t, "Target"), ty: attr(t, "Type") || "" }; }); return o; };
+    var R = rels(wbr), sheets = wbx.match(/<sheet\b[^>]*>/g) || [];
+    for (var i = 0; i < sheets.length; i++) {
+      var name = (attr(sheets[i], "name") || "").replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&apos;/g, "'");
+      var rid = attr(sheets[i], "r:id"); if (!R[rid]) continue;
+      var sp = rel("xl/workbook.xml", R[rid].t), sr = rels(await rd(sp.replace(/([^\/]+)$/, "_rels/$1.rels")));
+      var list = [];
+      for (var k in sr) {
+        if (!/\/drawing$/.test(sr[k].ty)) continue;
+        var dx = await rd(rel(sp, sr[k].t));
+        (dx.match(/<xdr:(?:twoCellAnchor|oneCellAnchor|absoluteAnchor)\b[\s\S]*?<\/xdr:(?:twoCellAnchor|oneCellAnchor|absoluteAnchor)>/g) || []).forEach(function (a) {
+          if (a.indexOf("<xdr:pic") < 0) return;
+          var fr = /<xdr:from>([\s\S]*?)<\/xdr:from>/.exec(a), g = function (t, s2) { var m = new RegExp("<xdr:" + t + ">(-?\\d+)<").exec(s2); return m ? +m[1] : 0; };
+          var xf = /<a:xfrm\b[^>]*>/.exec(a.slice(a.indexOf("<xdr:pic"))); xf = xf ? xf[0] : "";
+          var rot = (+(attr(xf, "rot") || 0)) / 60000;
+          var fH = attr(xf, "flipH") === "1" || attr(xf, "flipH") === "true", fV = attr(xf, "flipV") === "1" || attr(xf, "flipV") === "true";
+          if (fr) list.push({ key: g("col", fr[1]) + ":" + g("row", fr[1]) + ":" + g("colOff", fr[1]) + ":" + g("rowOff", fr[1]), rot: rot, fH: fH, fV: fV });
+        });
+      }
+      out[name] = list;
+    }
+    return out;
+  }
+  function loadImg(url) { return new Promise(function (ok, no) { var i = new Image(); i.onload = function () { ok(i); }; i.onerror = no; i.src = url; }); }
+  async function straighten(url, fmt, t) {
+    var img = await loadImg(url); /* el navegador ya respeta la orientación EXIF de las fotos */
+    var w = img.naturalWidth || img.width, h = img.naturalHeight || img.height;
+    var a = (t ? t.rot : 0) * Math.PI / 180, ca = Math.abs(Math.cos(a)), sa = Math.abs(Math.sin(a));
+    var cw = Math.round(w * ca + h * sa), ch = Math.round(w * sa + h * ca);
+    var cv = document.createElement("canvas"); cv.width = cw; cv.height = ch;
+    var x = cv.getContext("2d"); if (fmt === "JPEG") { x.fillStyle = "#fff"; x.fillRect(0, 0, cw, ch); }
+    x.translate(cw / 2, ch / 2); x.rotate(a); x.scale(t && t.fH ? -1 : 1, t && t.fV ? -1 : 1); x.drawImage(img, -w / 2, -h / 2, w, h);
+    return { url: cv.toDataURL(fmt === "PNG" ? "image/png" : "image/jpeg", 0.92), fmt: fmt, a: a };
+  }
+  async function prepImages(buf, wb) {
+    FIX = {}; if (typeof document === "undefined") return;
+    var T = {}; try { T = await readTransforms(buf, typeof JSZip !== "undefined" ? JSZip : null); } catch (e) { T = {}; }
+    for (var i = 0; i < wb.worksheets.length; i++) {
+      var ws = wb.worksheets[i], imgs = []; try { imgs = ws.getImages() || []; } catch (e) { }
+      for (var j = 0; j < imgs.length; j++) {
+        var im = imgs[j], key = imKey(im), t = null;
+        (T[ws.name] || []).forEach(function (q) { if (q.key === key) t = q; });
+        try {
+          var media = wb.getImage(+im.imageId), ext = String(media.extension || "png").toLowerCase();
+          if (ext !== "png" && ext !== "jpeg" && ext !== "jpg") continue;
+          var fmt = ext === "png" ? "PNG" : "JPEG";
+          var data = media.base64 ? media.base64.replace(/^data:[^,]*,/, "") : b64(media.buffer);
+          var fx = await straighten("data:image/" + (fmt === "PNG" ? "png" : "jpeg") + ";base64," + data, fmt, t);
+          FIX[ws.name + "|" + key] = fx;
+        } catch (e) { }
+      }
+    }
+  }
+
   async function render(buf, ExcelJS, XLSX, jsPDF, onSheet) {
     var wb = new ExcelJS.Workbook();
     await wb.xlsx.load(buf);
+    try { await prepImages(buf, wb); } catch (e) { FIX = {}; }
     var sj = XLSX.read(buf, { type: "array", cellDates: false });
     var doc = new jsPDF({ unit: "pt", format: "a4" }), first = { v: true }, n = 0;
     var list = wb.worksheets.filter(function (w) { return w.state !== "hidden" && w.state !== "veryHidden"; });
