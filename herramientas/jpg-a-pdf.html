@@ -104,4 +104,156 @@ document.getElementById("waShare").onclick=async function(){
   window.open("https://wa.me/?text="+encodeURIComponent(msg+" (adjuntá el PDF que se descargó)"),"_blank","noopener");
 };
 </script>
+<script>/* JC ADS escáner: foto del papel -> recorte automático ajustable -> enderezar -> modo documento */
+(function(){
+"use strict";
+function $(i){return document.getElementById(i)}
+var css=document.createElement("style");
+css.textContent=".scanbtn{display:inline-flex;align-items:center;gap:10px;background:#facc15;color:#0b1530;font-weight:800;font-size:1.08rem;border:0;border-radius:999px;padding:14px 30px;cursor:pointer;margin-bottom:8px}"+
+".scanhint{color:#a5b4fc;font-size:.9rem;margin:0 0 14px}"+
+"#scanEd{position:fixed;inset:0;z-index:9999;background:#060d22;display:flex;flex-direction:column;align-items:center;padding:10px;gap:8px;touch-action:none}"+
+"#scanEd[hidden]{display:none}"+
+"#scanEd .cv{position:relative;flex:1;width:100%;display:flex;align-items:center;justify-content:center;min-height:0}"+
+"#scanEd canvas{max-width:100%;max-height:100%;touch-action:none}"+
+"#scanEd p{color:#fff;margin:0;font-size:.95rem;text-align:center}"+
+"#scanEd .row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center}"+
+"#scanEd button{border:0;border-radius:999px;padding:11px 20px;font-weight:800;font-size:1rem;cursor:pointer;background:#1b3a6b;color:#fff}"+
+"#scanEd button.ok{background:#facc15;color:#0b1530}"+
+"#scanEd label{color:#fff;font-size:.95rem;display:flex;align-items:center;gap:6px}"+
+"#scanEd input[type=range]{width:140px}";
+document.head.appendChild(css);
+
+var drop=$("drop"), pick=drop.querySelector(".pick");
+var b=document.createElement("button"); b.type="button"; b.className="scanbtn";
+b.innerHTML='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>Sacar foto al papel';
+var hint=document.createElement("p"); hint.className="scanhint"; hint.textContent="Abre la cámara del celular · se recorta y endereza solo";
+var cam=document.createElement("input"); cam.type="file"; cam.accept="image/*"; cam.setAttribute("capture","environment"); cam.hidden=true;
+drop.insertBefore(b,pick); drop.insertBefore(hint,pick); drop.appendChild(cam);
+b.addEventListener("click",function(e){e.stopPropagation(); cam.click();});
+cam.addEventListener("click",function(e){e.stopPropagation()});
+cam.addEventListener("change",function(){var f=cam.files&&cam.files[0]; cam.value=""; if(f) openEd(f);});
+
+/* editor */
+var ed=document.createElement("div"); ed.id="scanEd"; ed.hidden=true;
+ed.innerHTML='<p>Arrastrá las 4 esquinas al borde del papel</p><div class="cv"><canvas id="scanCv"></canvas></div>'+
+'<div class="row"><button type="button" id="scRot">Girar</button><button type="button" id="scAuto">Automático</button><label>Brillo <input type="range" id="scBr" min="-60" max="60" value="0"></label><label><input type="checkbox" id="scDoc" checked> Modo documento</label></div>'+
+'<div class="row"><button type="button" id="scCancel">Cancelar</button><button type="button" class="ok" id="scOk">Listo</button></div>';
+document.body.appendChild(ed);
+var cv=$("scanCv"), cx=cv.getContext("2d");
+var src=null, Q=null, drag=-1, n=0;
+
+function loadFile(f){return new Promise(function(res,rej){var u=URL.createObjectURL(f),i=new Image();i.onload=function(){res(i)};i.onerror=rej;i.src=u;});}
+function toCanvas(img,max){var w=img.naturalWidth||img.width,h=img.naturalHeight||img.height,k=Math.min(1,max/Math.max(w,h));var c=document.createElement("canvas");c.width=Math.round(w*k);c.height=Math.round(h*k);c.getContext("2d").drawImage(img,0,0,c.width,c.height);return c;}
+function rotate(c){var o=document.createElement("canvas");o.width=c.height;o.height=c.width;var x=o.getContext("2d");x.translate(o.width,0);x.rotate(Math.PI/2);x.drawImage(c,0,0);return o;}
+
+/* detección automática del papel: zona clara más grande */
+function detect(c){
+ var k=Math.min(1,300/Math.max(c.width,c.height)),w=Math.max(2,Math.round(c.width*k)),h=Math.max(2,Math.round(c.height*k));
+ var s=document.createElement("canvas");s.width=w;s.height=h;var x=s.getContext("2d");x.drawImage(c,0,0,w,h);
+ var d=x.getImageData(0,0,w,h).data,g=new Uint8Array(w*h),hist=new Array(256).fill(0),i;
+ for(i=0;i<w*h;i++){var v=(d[i*4]*0.3+d[i*4+1]*0.59+d[i*4+2]*0.11)|0;g[i]=v;hist[v]++;}
+ var tot=w*h,sum=0;for(i=0;i<256;i++)sum+=i*hist[i];var sB=0,wB=0,best=0,th=128;
+ for(i=0;i<256;i++){wB+=hist[i];if(!wB)continue;var wF=tot-wB;if(!wF)break;sB+=i*hist[i];var mB=sB/wB,mF=(sum-sB)/wF,bv=wB*wF*(mB-mF)*(mB-mF);if(bv>best){best=bv;th=i;}}
+ var lab=new Int32Array(w*h),bestL=0,bestN=0,L=0,st=[];
+ for(i=0;i<w*h;i++){if(g[i]<=th||lab[i])continue;L++;var cnt=0;st.push(i);lab[i]=L;
+  while(st.length){var p=st.pop();cnt++;var px=p%w,py=(p/w)|0;
+   if(px>0&&!lab[p-1]&&g[p-1]>th){lab[p-1]=L;st.push(p-1)}
+   if(px<w-1&&!lab[p+1]&&g[p+1]>th){lab[p+1]=L;st.push(p+1)}
+   if(py>0&&!lab[p-w]&&g[p-w]>th){lab[p-w]=L;st.push(p-w)}
+   if(py<h-1&&!lab[p+w]&&g[p+w]>th){lab[p+w]=L;st.push(p+w)}}
+  if(cnt>bestN){bestN=cnt;bestL=L;}}
+ var def=[[.04,.04],[.96,.04],[.96,.96],[.04,.96]].map(function(q){return [q[0]*c.width,q[1]*c.height]});
+ if(bestN<tot*0.12||bestN>tot*0.985) return def;
+ var tl=[0,0,1e9],tr=[0,0,-1e9],br=[0,0,-1e9],bl=[0,0,1e9];
+ for(i=0;i<w*h;i++){if(lab[i]!==bestL)continue;var X=i%w,Y=(i/w)|0;
+  if(X+Y<tl[2])tl=[X,Y,X+Y]; if(X+Y>br[2])br=[X,Y,X+Y]; if(X-Y>tr[2])tr=[X,Y,X-Y]; if(X-Y<bl[2])bl=[X,Y,X-Y];}
+ return [tl,tr,br,bl].map(function(p){return [(p[0]+.5)/k,(p[1]+.5)/k]});
+}
+
+function fit(){var box=ed.querySelector(".cv").getBoundingClientRect();var k=Math.min(box.width/src.width,box.height/src.height,1);cv.width=Math.round(src.width*k);cv.height=Math.round(src.height*k);cv._k=k;}
+function draw(){
+ if(!src)return; var k=cv._k; cx.drawImage(src,0,0,cv.width,cv.height);
+ cx.fillStyle="rgba(0,0,0,.45)";cx.beginPath();cx.rect(0,0,cv.width,cv.height);
+ cx.moveTo(Q[0][0]*k,Q[0][1]*k);for(var i=3;i>=1;i--)cx.lineTo(Q[i][0]*k,Q[i][1]*k);cx.closePath();cx.fill("evenodd");
+ cx.strokeStyle="#22d3ee";cx.lineWidth=3;cx.beginPath();Q.forEach(function(p,i){i?cx.lineTo(p[0]*k,p[1]*k):cx.moveTo(p[0]*k,p[1]*k)});cx.closePath();cx.stroke();
+ Q.forEach(function(p){cx.beginPath();cx.arc(p[0]*k,p[1]*k,14,0,7);cx.fillStyle="#22d3ee";cx.fill();cx.lineWidth=3;cx.strokeStyle="#fff";cx.stroke();});
+}
+function pos(e){var r=cv.getBoundingClientRect();return [(e.clientX-r.left)*(cv.width/r.width)/cv._k,(e.clientY-r.top)*(cv.height/r.height)/cv._k];}
+cv.addEventListener("pointerdown",function(e){var p=pos(e),bd=1e9;drag=-1;Q.forEach(function(q,i){var dd=Math.hypot(q[0]-p[0],q[1]-p[1]);if(dd<bd){bd=dd;drag=i}});if(bd*cv._k>60)drag=-1;if(drag>-1){cv.setPointerCapture(e.pointerId);e.preventDefault();}});
+cv.addEventListener("pointermove",function(e){if(drag<0)return;var p=pos(e);Q[drag]=[Math.max(0,Math.min(src.width,p[0])),Math.max(0,Math.min(src.height,p[1]))];draw();});
+cv.addEventListener("pointerup",function(){drag=-1});cv.addEventListener("pointercancel",function(){drag=-1});
+window.addEventListener("resize",function(){if(!ed.hidden){fit();draw();}});
+
+function openEd(f){
+ loadFile(f).then(function(img){src=toCanvas(img,2400);ed.hidden=false;document.body.style.overflow="hidden";$("scBr").value=0;fit();Q=detect(src);draw();})
+ .catch(function(){var e=$("err");if(e)e.textContent="No pude abrir la foto. Probá de nuevo.";});
+}
+function close(){ed.hidden=true;document.body.style.overflow="";src=null;}
+$("scCancel").onclick=close;
+$("scRot").onclick=function(){src=rotate(src);fit();Q=detect(src);draw();};
+$("scAuto").onclick=function(){Q=detect(src);draw();};
+
+/* enderezar (perspectiva) */
+function solve(A,B){var m=A.length;for(var c=0;c<m;c++){var p=c;for(var r=c+1;r<m;r++)if(Math.abs(A[r][c])>Math.abs(A[p][c]))p=r;var t=A[c];A[c]=A[p];A[p]=t;t=B[c];B[c]=B[p];B[p]=t;for(r=c+1;r<m;r++){var f=A[r][c]/A[c][c];for(var k=c;k<m;k++)A[r][k]-=f*A[c][k];B[r]-=f*B[c];}}var x=new Array(m);for(var i=m-1;i>=0;i--){var s=B[i];for(var j=i+1;j<m;j++)s-=A[i][j]*x[j];x[i]=s/A[i][i];}return x;}
+function homog(d,s){var A=[],B=[];for(var i=0;i<4;i++){var u=d[i][0],v=d[i][1],x=s[i][0],y=s[i][1];A.push([u,v,1,0,0,0,-u*x,-v*x]);B.push(x);A.push([0,0,0,u,v,1,-u*y,-v*y]);B.push(y);}return solve(A,B);}
+function dist(a,b){return Math.hypot(a[0]-b[0],a[1]-b[1])}
+function warp(){
+ var W=Math.round((dist(Q[0],Q[1])+dist(Q[3],Q[2]))/2),H=Math.round((dist(Q[0],Q[3])+dist(Q[1],Q[2]))/2);
+ var k=Math.min(1,2400/Math.max(W,H));W=Math.max(10,Math.round(W*k));H=Math.max(10,Math.round(H*k));
+ var h=homog([[0,0],[W,0],[W,H],[0,H]],Q);
+ var sw=src.width,sh=src.height,sd=src.getContext("2d").getImageData(0,0,sw,sh).data;
+ var o=document.createElement("canvas");o.width=W;o.height=H;var ox=o.getContext("2d"),od=ox.createImageData(W,H),D=od.data;
+ for(var v=0;v<H;v++)for(var u=0;u<W;u++){
+  var den=h[6]*u+h[7]*v+1,x=(h[0]*u+h[1]*v+h[2])/den,y=(h[3]*u+h[4]*v+h[5])/den;
+  var x0=Math.floor(x),y0=Math.floor(y);if(x0<0)x0=0;if(y0<0)y0=0;if(x0>sw-2)x0=sw-2;if(y0>sh-2)y0=sh-2;
+  var fx=Math.min(1,Math.max(0,x-x0)),fy=Math.min(1,Math.max(0,y-y0)),i0=(y0*sw+x0)*4,i1=i0+4,i2=i0+sw*4,i3=i2+4,o4=(v*W+u)*4;
+  for(var c=0;c<3;c++)D[o4+c]=(sd[i0+c]*(1-fx)+sd[i1+c]*fx)*(1-fy)+(sd[i2+c]*(1-fx)+sd[i3+c]*fx)*fy;
+  D[o4+3]=255;}
+ ox.putImageData(od,0,0);return o;
+}
+/* modo documento: quita sombras, fondo blanco, letra negra */
+function docMode(c,br){
+ var W=c.width,H=c.height,x=c.getContext("2d"),id=x.getImageData(0,0,W,H),d=id.data;
+ var sw=Math.max(8,Math.round(W/24)),sh=Math.max(8,Math.round(H/24)),s=document.createElement("canvas");s.width=sw;s.height=sh;
+ var sx=s.getContext("2d");sx.filter="blur(2px)";sx.drawImage(c,0,0,sw,sh);
+ var bg=document.createElement("canvas");bg.width=W;bg.height=H;var bx=bg.getContext("2d");bx.imageSmoothingEnabled=true;bx.drawImage(s,0,0,W,H);
+ var b=bx.getImageData(0,0,W,H).data;
+ for(var i=0;i<d.length;i+=4){
+  var g=d[i]*0.3+d[i+1]*0.59+d[i+2]*0.11,bgv=Math.max(40,b[i]*0.3+b[i+1]*0.59+b[i+2]*0.11);
+  var v=g/bgv*255;v=(v-70)*255/170+br;v=v<0?0:v>255?255:v;
+  var col=Math.max(d[i],d[i+1],d[i+2])-Math.min(d[i],d[i+1],d[i+2]);
+  if(col>60&&v<200){var f=v/Math.max(1,g);d[i]=Math.min(255,d[i]*f);d[i+1]=Math.min(255,d[i+1]*f);d[i+2]=Math.min(255,d[i+2]*f);}
+  else d[i]=d[i+1]=d[i+2]=v;}
+ x.putImageData(id,0,0);return c;
+}
+function bright(c,br){if(!br)return c;var x=c.getContext("2d"),id=x.getImageData(0,0,c.width,c.height),d=id.data;for(var i=0;i<d.length;i+=4){d[i]=Math.max(0,Math.min(255,d[i]+br));d[i+1]=Math.max(0,Math.min(255,d[i+1]+br));d[i+2]=Math.max(0,Math.min(255,d[i+2]+br));}x.putImageData(id,0,0);return c;}
+$("scOk").onclick=function(){
+ var btn=this;btn.disabled=true;btn.textContent="Procesando…";
+ setTimeout(function(){
+  try{var o=warp(),br=+$("scBr").value;o=$("scDoc").checked?docMode(o,br):bright(o,br);
+   o.toBlob(function(bl){n++;var f=new File([bl],"documento-"+n+".jpg",{type:"image/jpeg"});close();btn.disabled=false;btn.textContent="Listo";
+    if(window.S&&S.add)S.add([f]);},"image/jpeg",.9);
+  }catch(e){btn.disabled=false;btn.textContent="Listo";close();}
+ },30);
+};
+})();
+</script>
+<script>(function(){
+ var wa=document.getElementById("waShare"); if(!wa) return;
+ var st="display:inline-flex;align-items:center;gap:8px;margin:14px 6px 0;background:#1b3a6b;color:#fff;font-weight:800;font-size:1rem;padding:12px 24px;border-radius:999px;border:0;cursor:pointer";
+ var box=document.createElement("div");
+ box.innerHTML='<button type="button" id="pdfOpen" style="'+st+'">Abrir PDF</button><button type="button" id="pdfPrint" style="'+st+'">Imprimir</button>';
+ wa.parentNode.insertBefore(box,wa.nextSibling);
+ var mob=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+ document.getElementById("pdfOpen").onclick=function(){var L=window.__jctLast;if(L)window.open(L.url,"_blank");};
+ document.getElementById("pdfPrint").onclick=function(){
+  var L=window.__jctLast;if(!L)return;
+  if(mob){window.open(L.url,"_blank");return;}
+  var f=document.getElementById("pdfFrame");if(f)f.remove();
+  f=document.createElement("iframe");f.id="pdfFrame";f.style.cssText="position:fixed;right:0;bottom:0;width:1px;height:1px;border:0;opacity:0";
+  f.onload=function(){setTimeout(function(){try{f.contentWindow.focus();f.contentWindow.print();}catch(e){window.open(L.url,"_blank");}},300);};
+  f.src=L.url;document.body.appendChild(f);
+ };
+})();
+</script>
 </body></html>

@@ -329,4 +329,22 @@ document.getElementById("waShare").onclick=async function(){
 };
 </script>
 <script async src="https://jcads.onrender.com/ads/jcads.js"></script>
+<script>(function(){
+ var wa=document.getElementById("waShare"); if(!wa) return;
+ var st="display:inline-flex;align-items:center;gap:8px;margin:14px 6px 0;background:#1b3a6b;color:#fff;font-weight:800;font-size:1rem;padding:12px 24px;border-radius:999px;border:0;cursor:pointer";
+ var box=document.createElement("div");
+ box.innerHTML='<button type="button" id="pdfOpen" style="'+st+'">Abrir PDF</button><button type="button" id="pdfPrint" style="'+st+'">Imprimir</button>';
+ wa.parentNode.insertBefore(box,wa.nextSibling);
+ var mob=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+ document.getElementById("pdfOpen").onclick=function(){var L=window.__jctLast;if(L)window.open(L.url,"_blank");};
+ document.getElementById("pdfPrint").onclick=function(){
+  var L=window.__jctLast;if(!L)return;
+  if(mob){window.open(L.url,"_blank");return;}
+  var f=document.getElementById("pdfFrame");if(f)f.remove();
+  f=document.createElement("iframe");f.id="pdfFrame";f.style.cssText="position:fixed;right:0;bottom:0;width:1px;height:1px;border:0;opacity:0";
+  f.onload=function(){setTimeout(function(){try{f.contentWindow.focus();f.contentWindow.print();}catch(e){window.open(L.url,"_blank");}},300);};
+  f.src=L.url;document.body.appendChild(f);
+ };
+})();
+</script>
 </body></html>
