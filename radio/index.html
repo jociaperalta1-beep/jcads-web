@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Radio mundial en vivo gratis: radios del mundo y cristianas | JC ADS</title><meta name="description" content="Escuchá más de 60.000 radios en vivo de 226 países y radios cristianas en español, alemán, inglés y portugués. Gratis, sin registro.">
+<link rel="canonical" href="https://jcads.net/radio/">
+<link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#040c20"><link rel="apple-touch-icon" href="/icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="JC ADS"><link rel="icon" type="image/png" href="../favicon.png"><link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="../herramientas/tools.css">
+<meta property="og:type" content="website"><meta property="og:site_name" content="JC ADS"><meta property="og:title" content="Radio mundial en vivo gratis: radios del mundo y cristianas | JC ADS"><meta property="og:description" content="Escuchá más de 60.000 radios en vivo de 226 países y radios cristianas en español, alemán, inglés y portugués. Gratis, sin registro."><meta property="og:url" content="https://jcads.net/radio/"><meta property="og:image" content="https://jcads.net/logo.png">
+<meta name="twitter:card" content="summary"><meta name="twitter:site" content="@jcads_oficial">
+<style>.rd{max-width:1500px;margin:0 auto;padding:26px 18px 40px}
+.rd-head{text-align:center}
+.rd h1{font-size:clamp(1.8rem,4vw,2.8rem);margin:6px 0 4px}
+.rd-sub{color:var(--mut);margin:0 0 14px}
+.rd-mini{background:#0b1d40;color:#facc15;border:2px solid #facc15;border-radius:999px;padding:9px 22px;font:inherit;font-weight:800;cursor:pointer}
+.rd-mini:hover{background:#13285a}
+.rd-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,440px) minmax(0,1fr);gap:22px;margin-top:22px;align-items:start}
+.rd-col{background:#071434;border:2px solid var(--acc);border-radius:22px;padding:20px 18px;min-width:0}
+.rd-chr{border-color:#facc15}
+.rd-col h2{margin:0;font-size:1.45rem;color:var(--acc)}
+.rd-chr h2{color:#facc15}
+.rd-hint{color:var(--mut);margin:2px 0 12px;font-size:.95rem}
+.rd-search{display:flex;align-items:center;gap:8px;background:#020a1f;border:2px solid #23446e;border-radius:999px;padding:4px 14px}
+.rd-search:focus-within{border-color:var(--acc)}
+.rd-chr .rd-search:focus-within{border-color:#facc15}
+.rd-search svg{width:20px;height:20px;color:var(--mut);flex:0 0 20px}
+.rd-search input{flex:1;min-width:0;background:transparent;border:0;outline:0;color:var(--txt);font:inherit;padding:9px 2px}
+.rd-chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.rd-chips button{background:#0e2148;color:var(--txt);border:0;border-radius:999px;padding:6px 14px;font:inherit;font-size:.9rem;cursor:pointer}
+.rd-chips button.on{background:var(--acc);color:#04122b;font-weight:700}
+.rd-chr .rd-chips button.on{background:#facc15}
+.rd-list{list-style:none;margin:0;padding:0;max-height:560px;overflow:auto}
+.rd-list li{display:flex;align-items:center;gap:12px;background:#0a1c44;border:2px solid transparent;border-radius:14px;padding:10px 12px;margin-bottom:9px;cursor:pointer}
+.rd-list li:hover{background:#10285a}
+.rd-list li.on{border-color:var(--acc);background:#12306a}
+.rd-chr .rd-list li.on{border-color:#facc15}
+.rd-list img,.rd-list .ph{width:42px;height:42px;border-radius:50%;object-fit:cover;flex:0 0 42px;background:#14315f;display:flex;align-items:center;justify-content:center;color:var(--acc);font-weight:800}
+.rd-chr .rd-list .ph{color:#facc15}
+.rd-list .tx{flex:1;min-width:0}
+.rd-list b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rd-list small{display:block;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rd-list .pb{width:38px;height:38px;border-radius:50%;background:#1b3a6b;flex:0 0 38px;display:flex;align-items:center;justify-content:center;color:#fff}
+.rd-list li.on .pb{background:var(--acc);color:#04122b}
+.rd-chr .rd-list li.on .pb{background:#facc15}
+.rd-list .msg{background:none;cursor:default;color:var(--mut);justify-content:center}
+.rd-foot{color:var(--mut);font-size:.85rem;text-align:center;margin:10px 0 0}
+.rd-center{text-align:center;min-width:0}
+.rd-live{margin:0 0 10px;font-weight:800;color:#64748b;letter-spacing:.05em}
+.rd-live i{display:inline-block;width:12px;height:12px;border-radius:50%;background:#64748b;margin-right:8px;vertical-align:middle}
+.rd.playing .rd-live{color:#ef4444}.rd.playing .rd-live i{background:#ef4444;animation:blink 1.2s infinite}
+@keyframes blink{50%{opacity:.25}}
+.rd-disc{position:relative;width:min(380px,82vw);aspect-ratio:1;margin:0 auto;border-radius:50%;background:#040c24;border:5px solid var(--acc);transition:box-shadow .5s}
+.rd.playing .rd-disc{box-shadow:0 0 40px 8px rgba(34,211,238,.45),inset 0 0 30px rgba(34,211,238,.25)}
+.rd-ring{position:absolute;inset:6px;border-radius:50%;background:repeating-conic-gradient(from 0deg,#22d3ee 0 1.2deg,transparent 1.2deg 7.5deg);-webkit-mask:radial-gradient(circle,transparent 79%,#000 80%,#000 86%,transparent 87%);mask:radial-gradient(circle,transparent 79%,#000 80%,#000 86%,transparent 87%);opacity:.55}
+.rd-ring::after{content:"";position:absolute;inset:0;border-radius:50%;border:4px solid transparent;border-top-color:#fff;border-right-color:#fff}
+.rd.playing .rd-ring{animation:spin 6s linear infinite;opacity:1}
+@keyframes spin{to{transform:rotate(360deg)}}
+.rd-face{position:absolute;inset:16%;border-radius:50%;background:radial-gradient(circle,#0a2350,#061533);border:3px solid var(--acc);display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}
+.rd-brand{color:var(--acc);font-size:1rem;letter-spacing:.06em}
+.rd-clock{font-family:ui-monospace,Menlo,Consolas,monospace;font-weight:800;font-size:clamp(2.2rem,8vw,3.6rem);line-height:1.05;color:#fff}
+.rd-date{color:var(--mut);font-size:.85rem;margin:2px 10px 8px}
+.rd-mq{width:82%;overflow:hidden;white-space:nowrap;background:#020a1f;border:1px solid #23446e;border-radius:8px;padding:3px 0}
+.rd-mq span{display:inline-block;padding-left:100%;color:#facc15;font-weight:700;font-size:.85rem;animation:mq 12s linear infinite}
+@keyframes mq{to{transform:translateX(-100%)}}
+.rd-name{margin:18px 0 4px;font-size:1.5rem}
+.rd-now{margin:0 auto;max-width:420px;overflow:hidden;white-space:nowrap;background:#020a1f;border-radius:8px;padding:4px 0;color:var(--acc);font-size:.92rem}
+.rd-now span{display:inline-block;padding-left:100%;animation:mq 16s linear infinite}
+.rd-eq{display:flex;justify-content:center;align-items:flex-end;gap:6px;height:46px;margin:12px 0}
+.rd-eq i{width:10px;height:8px;border-radius:4px;background:var(--acc);opacity:.35}
+.rd.playing .rd-eq i{opacity:1;animation:eq 1s ease-in-out infinite alternate}
+.rd-eq i:nth-child(2n){animation-delay:-.4s!important}.rd-eq i:nth-child(3n){animation-delay:-.7s!important;animation-duration:.8s!important}
+@keyframes eq{0%{height:8px}100%{height:44px}}
+.rd-ctrl{display:flex;justify-content:center;align-items:center;gap:26px}
+.rd-ctrl button{background:none;border:0;color:#fff;cursor:pointer;width:46px;height:46px;padding:6px}
+.rd-ctrl svg{width:100%;height:100%}
+.rd-ctrl .rd-play{width:78px;height:78px;border-radius:50%;background:var(--acc);color:#04122b;padding:18px}
+.rd-vol{display:flex;align-items:center;justify-content:center;gap:10px;color:var(--mut);margin-top:12px;font-size:.9rem}
+.rd-vol input{width:160px;accent-color:#22d3ee}
+.rd-err{color:#fca5a5;min-height:1.2em;font-size:.9rem}
+.rd-note{color:var(--mut);font-size:.8rem;text-align:center;margin-top:18px}
+.rd .ad-box{margin:26px auto 0;text-align:center}
+@media (max-width:1100px){.rd-grid{grid-template-columns:1fr 1fr}.rd-center{grid-column:1/-1;order:-1}}
+@media (max-width:700px){.rd-grid{grid-template-columns:1fr}.rd-list{max-height:420px}}
+/* ventanita */
+.mini header,.mini footer,.mini .rd-head,.mini .rd-col,.mini .ad-box,.mini .rd-note{display:none!important}
+.mini .rd{padding:10px}.mini .rd-grid{display:block;margin:0}.mini .rd-disc{width:min(260px,70vw)}
+.mini .rd-name{font-size:1.15rem;margin-top:10px}
+
+.rd [hidden]{display:none!important}
+</style>
+<script src="../i18n.js" defer></script></head><body>
+<header><div class="nav"><a class="brand" href="../index.html"><img src="../logo.png" alt="JC ADS"><span class="brand-t"><b>JC ADS</b><small>Red Publicitaria Digital</small></span></a>
+<nav><a href="../index.html#servicios">Servicios</a><a href="../index.html#precios">Precios</a><a href="../index.html#como">Cómo funciona</a><a href="../blog/index.html">Blog</a><a href="../herramientas/index.html">Herramientas</a><a href="../musica/index.html">Música</a><a href="index.html" aria-current="page">Radio</a><a href="../contacto.html">Contacto</a><a class="btn" href="https://jcads.net/entrar">Ingresar</a><details class="langdd"><summary><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><ellipse cx="12" cy="12" rx="4" ry="10"/><path d="M2 12h20"/></svg><span>ES</span><i>▾</i></summary><div class="langlist"><a href="?lang=es" data-lang="es" class="on"><b>ES</b> Español</a><a href="?lang=en" data-lang="en"><b>EN</b> English</a><a href="?lang=pt" data-lang="pt"><b>PT</b> Português</a><a href="?lang=de" data-lang="de"><b>DE</b> Deutsch</a></div></details></nav></div></header>
+<main class="rd" translate="no">
+<div class="rd-head"><h1 data-t="h1">Radio mundial en vivo</h1><p class="rd-sub" data-t="sub">Más de 60.000 radios de 226 países · gratis · sin registro</p>
+<button type="button" class="rd-mini" id="miniBtn" data-t="mini">Abrir en ventanita: sigue sonando</button></div>
+<div class="rd-grid">
+<section class="rd-col rd-world" aria-labelledby="tw">
+<h2 id="tw" data-t="world">Radio sonido a tu oído</h2><p class="rd-hint" data-t="worldSub">Música, noticias, deportes</p>
+<label class="rd-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input type="search" id="qW" autocomplete="off" data-tp="phW" placeholder="País, ciudad o estilo…"></label>
+<div class="rd-chips" id="chipsW"></div>
+<ul class="rd-list" id="listW" aria-live="polite"></ul>
+<p class="rd-foot" data-t="auto">Búsqueda automática mientras escribís</p>
+</section>
+<section class="rd-center" aria-label="Reproductor">
+<p class="rd-live" id="live"><i></i><span data-t="live">EN VIVO</span></p>
+<div class="rd-disc" id="disc">
+<div class="rd-ring" id="ring"></div>
+<div class="rd-face">
+<b class="rd-brand">JC ADS</b>
+<div class="rd-clock" id="clock">00:00</div>
+<div class="rd-date" id="date"></div>
+<div class="rd-mq"><span id="mq"></span></div>
+</div>
+</div>
+<h3 class="rd-name" id="nowName" data-t="pick">Elegí una radio</h3>
+<p class="rd-now"><span id="nowInfo"></span></p>
+<div class="rd-eq" id="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<div class="rd-ctrl">
+<button type="button" id="prev" aria-label="Anterior"><svg viewBox="0 0 24 24"><path d="M6 5h2v14H6zM20 5v14L9 12z" fill="currentColor"/></svg></button>
+<button type="button" id="play" class="rd-play" aria-label="Reproducir"><svg id="icPlay" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg><svg id="icPause" viewBox="0 0 24 24" hidden><path d="M6 5h4v14H6zM14 5h4v14h-4z" fill="currentColor"/></svg></button>
+<button type="button" id="next" aria-label="Siguiente"><svg viewBox="0 0 24 24"><path d="M16 5h2v14h-2zM4 5v14l11-7z" fill="currentColor"/></svg></button>
+</div>
+<label class="rd-vol"><span data-t="vol">Volumen</span><input type="range" id="vol" min="0" max="1" step="0.05" value="0.8"></label>
+<p class="rd-err" id="err" role="status"></p>
+</section>
+<section class="rd-col rd-chr" aria-labelledby="tc">
+<h2 id="tc" data-t="chr">Radios cristianas JC ADS</h2><p class="rd-hint" data-t="chrSub">Elegí el idioma · alabanza y adoración</p>
+<label class="rd-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input type="search" id="qC" autocomplete="off" data-tp="phC" placeholder="Buscar radio cristiana…"></label>
+<div class="rd-chips" id="chipsC"></div>
+<ul class="rd-list" id="listC" aria-live="polite"></ul>
+<p class="rd-foot" data-t="auto">Búsqueda automática mientras escribís</p>
+</section>
+</div>
+<div class="ad-box"><span class="ad-label" data-t="ad">Publicidad</span><div class="jcads-ad" data-slot="3" style="width:300px;height:250px"></div></div>
+<p class="rd-note" data-t="note">Las radios transmiten su propia señal oficial en vivo; cada emisora es responsable de sus derechos. Datos de estaciones: Radio Browser (radio-browser.info).</p>
+</main>
+<footer><div class="wrap"><div class="foot">
+<div><strong style="color:var(--txt)">JC ADS Red Publicitaria Digital</strong><p>Publicidad digital online para empresas y sitios web de todo el mundo.</p><a href="../blog/index.html">Blog</a><a href="../herramientas/index.html">Herramientas</a><a href="../musica/index.html">Música</a><a href="index.html">Radio</a></div>
+<div><strong style="color:var(--txt)">Legal</strong><a href="../terminos.html">Términos y condiciones</a><a href="../privacidad.html">Política de privacidad</a><a href="../reembolsos.html">Política de reembolsos</a></div>
+<div><strong style="color:var(--txt)">Contacto</strong><a href="mailto:soporte@jcads.net">soporte@jcads.net</a><span>Dr. Juan Eulogio Estigarribia, Caaguazú, Paraguay</span></div>
+<div><strong style="color:var(--txt)">Comunidad</strong><a href="https://discord.gg/5cZBbPgEYw" target="_blank" rel="noopener">Discord</a><a href="https://www.tiktok.com/@jcads.net" target="_blank" rel="noopener">TikTok</a><a href="https://x.com/jcads_oficial" target="_blank" rel="noopener">X</a><a href="https://www.youtube.com/@jcads_oficial" target="_blank" rel="noopener">YouTube</a><a href="https://www.linkedin.com/in/jocia-peralta-322988446/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.instagram.com/jca.ds" target="_blank" rel="noopener">Instagram</a></div>
+</div><p class="copy">© 2026 JC ADS Red Publicitaria Digital · Titular: Jocia Alicio Peralta Florentin</p></div></footer>
+<script>(function(){
+"use strict";
+var T={
+es:{h1:"Radio mundial en vivo",sub:"Más de 60.000 radios de 226 países · gratis · sin registro",mini:"Abrir en ventanita: sigue sonando",world:"Radio sonido a tu oído",worldSub:"Música, noticias, deportes",phW:"País, ciudad o estilo…",auto:"Búsqueda automática mientras escribís",live:"EN VIVO",pick:"Elegí una radio",vol:"Volumen",chr:"Radios cristianas JC ADS",chrSub:"Elegí el idioma · alabanza y adoración",phC:"Buscar radio cristiana…",ad:"Publicidad",note:"Las radios transmiten su propia señal oficial en vivo; cada emisora es responsable de sus derechos. Datos de estaciones: Radio Browser (radio-browser.info).",listening:"Escuchando",now:"Ahora",from:"en vivo desde",loading:"Buscando radios…",none:"No encontré radios con esa búsqueda. Probá con otra palabra.",fail:"Esta radio no responde ahora. Probá con otra.",net:"No se pudo cargar la lista. Revisá tu conexión.",popup:"Tu navegador bloqueó la ventanita. Permití ventanas emergentes para jcads.net.",radio:"radio",title:"Radio mundial en vivo gratis: radios del mundo y cristianas | JC ADS",
+ chipsW:[["🌍 Todo el mundo",""]].concat(["US","GB","BR","ES","MX","AR","FR","IT","DE","JP","KR","IN","NG","CO","PY"].map(function(c){var n=c;try{n=new Intl.DisplayNames(["es"],{type:"region"}).of(c)}catch(e){}return[n,c]})).concat([["Noticias","#news"],["Pop","#pop"],["Rock","#rock"],["Jazz","#jazz"]])},
+en:{h1:"World radio, live",sub:"More than 60,000 stations from 226 countries · free · no sign-up",mini:"Open mini player: keeps playing",world:"Radio: Sound to Your Ears",worldSub:"Music, news, sports",phW:"Country, city or style…",auto:"Search starts as you type",live:"LIVE",pick:"Pick a station",vol:"Volume",chr:"JC ADS Christian Radio",chrSub:"Choose a language · praise and worship",phC:"Search Christian radio…",ad:"Advertisement",note:"Stations stream their own official live signal; each broadcaster is responsible for its rights. Station data: Radio Browser (radio-browser.info).",listening:"Now playing",now:"Now",from:"live from",loading:"Finding stations…",none:"No stations found. Try another word.",fail:"This station isn't responding right now. Try another one.",net:"Couldn't load the list. Check your connection.",popup:"Your browser blocked the mini player. Allow pop-ups for jcads.net.",radio:"radio",title:"Free live world radio: stations worldwide and Christian radio | JC ADS",
+ chipsW:[["🌍 Whole world",""]].concat(["US","GB","BR","ES","MX","AR","FR","IT","DE","JP","KR","IN","NG","CO","PY"].map(function(c){var n=c;try{n=new Intl.DisplayNames(["en"],{type:"region"}).of(c)}catch(e){}return[n,c]})).concat([["News","#news"],["Pop","#pop"],["Rock","#rock"],["Jazz","#jazz"]])},
+pt:{h1:"Rádio mundial ao vivo",sub:"Mais de 60.000 rádios de 226 países · grátis · sem cadastro",mini:"Abrir em janelinha: continua tocando",world:"Rádio som aos seus ouvidos",worldSub:"Música, notícias, esportes",phW:"País, cidade ou estilo…",auto:"Busca automática enquanto você digita",live:"AO VIVO",pick:"Escolha uma rádio",vol:"Volume",chr:"Rádios cristãs JC ADS",chrSub:"Escolha o idioma · louvor e adoração",phC:"Buscar rádio cristã…",ad:"Publicidade",note:"As rádios transmitem o próprio sinal oficial ao vivo; cada emissora é responsável pelos seus direitos. Dados das estações: Radio Browser (radio-browser.info).",listening:"Tocando",now:"Agora",from:"ao vivo de",loading:"Buscando rádios…",none:"Nenhuma rádio encontrada. Tente outra palavra.",fail:"Esta rádio não responde agora. Tente outra.",net:"Não foi possível carregar a lista. Verifique sua conexão.",popup:"Seu navegador bloqueou a janelinha. Permita pop-ups para jcads.net.",radio:"rádio",title:"Rádio mundial ao vivo grátis: rádios do mundo e cristãs | JC ADS",
+ chipsW:[["🌍 Mundo todo",""]].concat(["US","GB","BR","ES","MX","AR","FR","IT","DE","JP","KR","IN","NG","CO","PY"].map(function(c){var n=c;try{n=new Intl.DisplayNames(["pt"],{type:"region"}).of(c)}catch(e){}return[n,c]})).concat([["Notícias","#news"],["Pop","#pop"],["Rock","#rock"],["Jazz","#jazz"]])},
+de:{h1:"Weltradio live",sub:"Über 60.000 Sender aus 226 Ländern · kostenlos · ohne Anmeldung",mini:"Im Mini-Fenster öffnen: spielt weiter",world:"Radio: Klang für deine Ohren",worldSub:"Musik, Nachrichten, Sport",phW:"Land, Stadt oder Stil…",auto:"Suche startet beim Tippen",live:"LIVE",pick:"Wähle einen Sender",vol:"Lautstärke",chr:"Christliche Radios JC ADS",chrSub:"Sprache wählen · Lobpreis und Anbetung",phC:"Christliches Radio suchen…",ad:"Werbung",note:"Die Sender übertragen ihr eigenes offizielles Live-Signal; jeder Sender ist für seine Rechte verantwortlich. Senderdaten: Radio Browser (radio-browser.info).",listening:"Es läuft",now:"Jetzt",from:"live aus",loading:"Sender werden gesucht…",none:"Keine Sender gefunden. Versuch ein anderes Wort.",fail:"Dieser Sender antwortet gerade nicht. Versuch einen anderen.",net:"Liste konnte nicht geladen werden. Prüfe deine Verbindung.",popup:"Dein Browser hat das Mini-Fenster blockiert. Erlaube Pop-ups für jcads.net.",radio:"Radio",title:"Weltradio live kostenlos: Sender weltweit und christliche Radios | JC ADS",
+ chipsW:[["🌍 Ganze Welt",""]].concat(["US","GB","BR","ES","MX","AR","FR","IT","DE","JP","KR","IN","NG","CO","PY"].map(function(c){var n=c;try{n=new Intl.DisplayNames(["de"],{type:"region"}).of(c)}catch(e){}return[n,c]})).concat([["Nachrichten","#news"],["Pop","#pop"],["Rock","#rock"],["Jazz","#jazz"]])}
+};
+var CHR={ /* idioma -> búsquedas de radios cristianas */
+ es:{label:"Español",q:[["tag","cristiana"],["tag","christian","spanish"],["tag","evangelica"],["tag","alabanza"],["tag","cristiano"]]},
+ de:{label:"Deutsch",q:[["tag","christian","german"],["tag","christlich"],["tag","lobpreis"]]},
+ en:{label:"English",q:[["tag","christian","english"],["tag","worship","english"],["tag","gospel","english"]]},
+ pt:{label:"Português",q:[["tag","gospel","portuguese"],["tag","christian","portuguese"],["tag","evangelica","portuguese"],["tag","louvor"]]}
+};
+var NOT_XMAS=/christmas|xmas|weihnacht|navidad|natal\b|noel/i;
+var RELIG=/christ|gospel|cristian|evang|worship|lobpreis|alabanza|louvor|catol|cathol|church|iglesia|igreja|kirche|bible|biblia|bibel|religio|sermon|prédica|predica/i;
+
+var LANGS=["es","en","pt","de"];
+function pickLang(){
+ var m=/[?&]lang=(es|en|pt|de)\b/.exec(location.search); if(m) return m[1];
+ try{var s=localStorage.getItem("jcads_lang"); if(LANGS.indexOf(s)>-1) return s;}catch(e){}
+ var n=(navigator.language||"es").slice(0,2).toLowerCase(); return LANGS.indexOf(n)>-1?n:"es";
+}
+var L=pickLang(), t=T[L], LOC={es:"es-ES",en:"en-US",pt:"pt-BR",de:"de-DE"}[L];
+var MINI=/[?&]mini=1\b/.test(location.search);
+if(MINI) document.documentElement.classList.add("mini");
+
+var $=function(id){return document.getElementById(id)};
+var root=document.querySelector(".rd");
+
+/* textos */
+document.querySelectorAll("[data-t]").forEach(function(el){var k=el.getAttribute("data-t"); if(t[k]) el.textContent=t[k];});
+document.querySelectorAll("[data-tp]").forEach(function(el){var k=el.getAttribute("data-tp"); if(t[k]) el.setAttribute("placeholder",t[k]);});
+document.title=t.title;
+
+/* reloj */
+function tick(){
+ var d=new Date();
+ $("clock").textContent=d.toLocaleTimeString(LOC,{hour:"2-digit",minute:"2-digit",hour12:false});
+ var ds=d.toLocaleDateString(LOC,{weekday:"long",day:"numeric",month:"long",year:"numeric"}); $("date").textContent=ds.charAt(0).toUpperCase()+ds.slice(1);
+}
+tick(); setInterval(tick,1000);
+
+/* API Radio Browser (servidores espejo) */
+var HOSTS=["https://de1.api.radio-browser.info","https://de2.api.radio-browser.info","https://all.api.radio-browser.info"], hi=0;
+function api(path){
+ var tries=0;
+ function go(){
+  return fetch(HOSTS[hi]+"/json/"+path,{credentials:"omit"}).then(function(r){if(!r.ok) throw 0; return r.json();})
+  .catch(function(e){ if(++tries<HOSTS.length){hi=(hi+1)%HOSTS.length; return go();} throw e; });
+ }
+ return go();
+}
+function qs(o){var a=[]; for(var k in o) if(o[k]!=null&&o[k]!=="") a.push(k+"="+encodeURIComponent(o[k])); return a.join("&");}
+var BASE={hidebroken:"true",is_https:"true",order:"votes",reverse:"true"};
+function search(p,limit){var o={}; for(var k in BASE)o[k]=BASE[k]; for(k in p)o[k]=p[k]; o.limit=limit||40; return api("stations/search?"+qs(o)).catch(function(){return null;});}
+function clean(arr,max){
+ var seen={},out=[];
+ arr.forEach(function(s){
+  if(!s||!s.url_resolved||!/^https:/.test(s.url_resolved)) return;
+  var k=(s.name||"").trim().toLowerCase(); if(!k||seen[k]||seen[s.stationuuid]) return;
+  seen[k]=seen[s.stationuuid]=1; out.push(s);
+ });
+ return out.slice(0,max||40);
+}
+
+/* listas */
+var lists={W:[],C:[]}, cur=null, curList="W", curIdx=-1;
+var COUNTRY={};
+function tagsOf(s){return (s.tags||"").split(",").map(function(x){return x.trim()}).filter(Boolean).slice(0,3).join(", ");}
+var DN=null;try{DN=new Intl.DisplayNames([L],{type:"region"})}catch(e){}
+function cname(s){try{if(DN&&s.countrycode)return DN.of(s.countrycode)}catch(e){}return s.country||"";}
+function where(s){return [s.state,cname(s)].filter(Boolean).join(", ");}
+function esc(x){return String(x).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]});}
+function draw(which){
+ var ul=$("list"+which), arr=lists[which];
+ if(arr===null){ul.innerHTML='<li class="msg">'+esc(t.net)+'</li>';return;}
+ if(!arr.length){ul.innerHTML='<li class="msg">'+esc(t.none)+'</li>';return;}
+ ul.innerHTML=arr.map(function(s,i){
+  var ini=esc((s.name||"?").trim().charAt(0).toUpperCase());
+  var ic=s.favicon&&/^https:/.test(s.favicon)?'<img src="'+esc(s.favicon)+'" alt="" loading="lazy" onerror="this.outerHTML=\'<span class=ph>'+ini+'</span>\'">':'<span class="ph">'+ini+'</span>';
+  var on=cur&&cur.stationuuid===s.stationuuid;
+  return '<li data-i="'+i+'"'+(on?' class="on"':'')+'>'+ic+'<div class="tx"><b>'+esc(s.name.trim())+'</b><small>'+esc(cname(s))+(tagsOf(s)?' · '+esc(tagsOf(s)):'')+'</small></div><span class="pb">'+(on&&playing?'❚❚':'▶')+'</span></li>';
+ }).join("");
+}
+function loading(which){$("list"+which).innerHTML='<li class="msg">'+esc(t.loading)+'</li>';}
+["W","C"].forEach(function(w){
+ $("list"+w).addEventListener("click",function(e){
+  var li=e.target.closest("li[data-i]"); if(!li) return;
+  var i=+li.getAttribute("data-i"), s=lists[w][i];
+  if(cur&&cur.stationuuid===s.stationuuid){toggle();return;}
+  play(w,i);
+ });
+});
+
+/* mundo */
+var wSeq=0;
+function loadWorld(q,chip){
+ var my=++wSeq; loading("W");
+ var jobs;
+ if(chip&&chip.charAt(0)==="#") jobs=[search({tag:chip.slice(1)},60)];
+ else if(chip) jobs=[search({countrycode:chip},60)];
+ else if(q) jobs=[search({name:q},40),search({tag:q.toLowerCase()},40),search({country:q},40),search({state:q},30)];
+ else jobs=[search({},400)];
+ Promise.all(jobs).then(function(rs){
+  if(my!==wSeq) return;
+  if(rs.every(function(r){return r===null})){lists.W=null;draw("W");return;}
+  var all=[]; rs.forEach(function(r){if(r) all=all.concat(r)});
+  var f=all.filter(function(s){return !RELIG.test((s.tags||"")+" "+s.name)});
+  if(!q&&!chip){var pc={};f=clean(f,400).filter(function(s){var c=s.countrycode||"?";pc[c]=(pc[c]||0)+1;return pc[c]<=2;});}
+  lists.W=clean(f,40); draw("W");
+ });
+}
+/* cristianas */
+var cSeq=0, cLang=L;
+function loadChr(q){
+ var my=++cSeq; loading("C");
+ var jobs=CHR[cLang].q.map(function(x){var p={}; p[x[0]]=x[1]; if(x[2]) p.language=x[2]; if(q) p.name=q; return search(p,40);});
+ if(q) jobs.push(search({name:q,tag:"christian"},40),search({name:q,tag:"gospel"},40));
+ Promise.all(jobs).then(function(rs){
+  if(my!==cSeq) return;
+  if(rs.every(function(r){return r===null})){lists.C=null;draw("C");return;}
+  var all=[]; rs.forEach(function(r){if(r) all=all.concat(r)});
+  var LN={es:"spanish",de:"german",en:"english",pt:"portuguese"}[cLang];function lm(s){return (s.language||"").toLowerCase().indexOf(LN)>-1?1:0;}
+  all.sort(function(a,b){return (lm(b)-lm(a))||((b.votes||0)-(a.votes||0))});
+  lists.C=clean(all.filter(function(s){return !NOT_XMAS.test(s.name+" "+(s.tags||""))}),40); draw("C");
+ });
+}
+/* chips */
+function chips(id,items,onPick,active){
+ var box=$(id); box.innerHTML="";
+ items.forEach(function(it){
+  var b=document.createElement("button"); b.type="button"; b.textContent=it[0]; b.dataset.v=it[1];
+  if(it[1]===active) b.className="on";
+  b.onclick=function(){var was=b.classList.contains("on"); box.querySelectorAll("button").forEach(function(x){x.classList.remove("on")}); if(!was||id==="chipsC") b.classList.add("on"); onPick(was&&id!=="chipsC"?null:it[1]);};
+  box.appendChild(b);
+ });
+}
+chips("chipsW",t.chipsW,function(v){$("qW").value=""; loadWorld("",v);},"");
+chips("chipsC",["es","de","en","pt"].map(function(k){return[CHR[k].label,k]}),function(v){cLang=v; loadChr($("qC").value.trim());},cLang);
+function debounce(fn,ms){var h;return function(){var a=arguments;clearTimeout(h);h=setTimeout(function(){fn.apply(null,a)},ms)}}
+$("qW").addEventListener("input",debounce(function(){var q=$("qW").value.trim(); $("chipsW").querySelectorAll("button").forEach(function(x){x.classList.remove("on")}); loadWorld(q.length>1?q:"");},450));
+$("qC").addEventListener("input",debounce(function(){var q=$("qC").value.trim(); loadChr(q.length>1?q:"");},450));
+
+/* reproductor */
+var audio=new Audio(); audio.preload="none"; audio.volume=0.8;
+var playing=false;
+function setPlaying(p){
+ playing=p; root.classList.toggle("playing",p);
+ $("icPlay").hidden=p; $("icPause").hidden=!p;
+ draw("W"); draw("C");
+}
+function info(s){
+ $("nowName").textContent=s.name.trim();
+ var tg=tagsOf(s)||t.radio, w=where(s);
+ $("nowInfo").textContent=t.now+": "+tg+(w?" · "+t.from+" "+w:"")+(s.bitrate?" · "+s.bitrate+" kbps":"");
+ $("mq").textContent=t.listening+": "+s.name.trim()+" · "+tg+" ★";
+ document.title="▶ "+s.name.trim()+" | JC ADS";
+ if("mediaSession" in navigator){try{navigator.mediaSession.metadata=new MediaMetadata({title:s.name.trim(),artist:"JC ADS · "+(w||tg),artwork:s.favicon&&/^https:/.test(s.favicon)?[{src:s.favicon}]:[]});}catch(e){}}
+}
+function play(which,i){
+ var s=lists[which]&&lists[which][i]; if(!s) return;
+ cur=s; curList=which; curIdx=i; $("err").textContent="";
+ info(s);
+ audio.src=s.url_resolved;
+ audio.play().then(function(){setPlaying(true);}).catch(function(){setPlaying(false); $("err").textContent=t.fail;});
+ try{api("url/"+s.stationuuid);}catch(e){}
+ rotateAd();
+ if(!MINI) try{history.replaceState(null,"",location.pathname+"?"+qs({lang:/[?&]lang=/.test(location.search)?L:null,id:s.stationuuid}));}catch(e){}
+}
+function toggle(){
+ if(!cur){ if(lists.W&&lists.W.length) play("W",0); return; }
+ if(playing){audio.pause(); audio.removeAttribute("src"); audio.load(); setPlaying(false);}
+ else{audio.src=cur.url_resolved; audio.play().then(function(){setPlaying(true)}).catch(function(){$("err").textContent=t.fail;});}
+}
+function step(d){
+ var arr=lists[curList]; if(!arr||!arr.length) return;
+ var i=curIdx<0?0:(curIdx+d+arr.length)%arr.length; play(curList,i);
+}
+$("play").onclick=toggle; $("prev").onclick=function(){step(-1)}; $("next").onclick=function(){step(1)};
+$("vol").oninput=function(){audio.volume=+this.value};
+audio.addEventListener("error",function(){ if(playing||audio.src){ setPlaying(false); $("err").textContent=t.fail; }});
+if("mediaSession" in navigator){try{
+ navigator.mediaSession.setActionHandler("previoustrack",function(){step(-1)});
+ navigator.mediaSession.setActionHandler("nexttrack",function(){step(1)});
+ navigator.mediaSession.setActionHandler("play",toggle);navigator.mediaSession.setActionHandler("pause",toggle);
+}catch(e){}}
+
+/* ventanita aparte: sigue sonando aunque navegues por otras páginas */
+$("miniBtn").onclick=function(){
+ var u=location.pathname+"?"+qs({mini:1,lang:L,id:cur?cur.stationuuid:null});
+ var w=window.open(u,"jcads_radio","width=420,height=640,menubar=no,toolbar=no,location=no,status=no");
+ if(!w){$("err").textContent=t.popup;return;}
+ if(playing){audio.pause(); audio.removeAttribute("src"); audio.load(); setPlaying(false);}
+ try{w.focus()}catch(e){}
+};
+
+/* anuncio JC ADS: uno nuevo al cambiar de radio, máx. 1 por minuto y solo si se ve */
+var lastAd=Date.now();
+function rotateAd(){
+ var box=document.querySelector(".rd .jcads-ad"); if(!box||MINI) return;
+ if(Date.now()-lastAd<60000) return;
+ var r=box.getBoundingClientRect(); if(r.bottom<0||r.top>innerHeight) return;
+ lastAd=Date.now();
+ var n=document.createElement("div"); n.className="jcads-ad"; n.dataset.slot=box.dataset.slot; n.style.cssText="width:300px;height:250px;margin:0 auto";
+ box.replaceWith(n);
+ var sc=document.createElement("script"); sc.async=true; sc.src="https://jcads.onrender.com/ads/jcads.js?r="+Date.now(); document.body.appendChild(sc);
+}
+
+/* inicio */
+loadWorld(""); loadChr("");
+var id=(/[?&]id=([0-9a-f-]{36})/.exec(location.search)||[])[1];
+if(id){ api("stations/byuuid/"+id).then(function(r){ if(r&&r[0]&&/^https:/.test(r[0].url_resolved)){ lists.X=[r[0]]; cur=r[0]; curList="W"; curIdx=-1; info(r[0]); if(MINI){ audio.src=r[0].url_resolved; audio.play().then(function(){setPlaying(true)}).catch(function(){}); } } }).catch(function(){}); }
+})();
+</script>
+<script async src="https://jcads.onrender.com/ads/jcads.js"></script>
+<script src="/pwa.js" defer></script></body></html>
