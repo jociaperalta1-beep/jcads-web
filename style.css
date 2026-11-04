@@ -207,3 +207,19 @@ a.back-top.back-end{margin-top:22px}
 .langdd summary{padding:6px 11px}
 }
 @media(max-width:1100px){.nav{justify-content:center}.nav>nav{justify-content:center}}
+/* celular: la página no se mueve de costado + tabla de precios entra en pantalla (2026-11-03) */
+@media(max-width:900px){html,body{overflow-x:hidden;max-width:100%}}
+@media(max-width:640px){table{font-size:.9rem}th,td{padding:9px 7px}td.p,td:nth-child(2){white-space:nowrap}th{font-size:.75rem}}
+/* header compacto en celular (aprobado 2026-11-03) */
+@media(max-width:640px){
+.nav{min-height:0;padding:8px 10px;gap:6px 12px;justify-content:flex-start;flex-wrap:wrap}
+.nav nav{display:contents}
+.brand{order:0;flex:1 1 auto;min-width:0;gap:8px}.brand img{width:42px;height:42px}
+.brand-t b{font-size:1.15rem}.brand-t small{font-size:.5rem;letter-spacing:.8px;margin-top:2px}
+.nav .btn{order:1;padding:6px 14px!important;font-size:.82rem!important}
+.langdd{order:1;margin-left:0}.langdd summary{padding:5px 10px;font-size:.8rem}
+.langlist{left:auto!important;right:0!important;transform:none!important}
+.nav::after{content:"";order:2;flex-basis:100%;height:0}
+.nav nav a:not(.btn){order:3;font-size:.82rem}
+.nav nav a:not(.btn)::after{bottom:-3px}
+}
