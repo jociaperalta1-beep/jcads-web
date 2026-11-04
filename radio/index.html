@@ -78,6 +78,8 @@
 .rd .ad-box{margin:26px auto 0;text-align:center}
 @media (max-width:1100px){.rd-grid{grid-template-columns:1fr 1fr}.rd-center{grid-column:1/-1;order:-1}}
 @media (max-width:700px){.rd-grid{grid-template-columns:1fr}.rd-list{max-height:420px}}
+@media (max-width:700px){.rd-chips{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px}.rd-chips::-webkit-scrollbar{display:none}.rd-chips button{flex:0 0 auto;white-space:nowrap}}
+.rd-search{scroll-margin-top:8px}
 /* ventanita */
 .mini header,.mini footer,.mini .rd-head,.mini .rd-col,.mini .ad-box,.mini .rd-note{display:none!important}
 .mini .rd{padding:10px}.mini .rd-grid{display:block;margin:0}.mini .rd-disc{width:min(260px,70vw)}
@@ -309,6 +311,9 @@ chips("chipsC",["es","de","en","pt"].map(function(k){return[CHR[k].label,k]}),fu
 function debounce(fn,ms){var h;return function(){var a=arguments;clearTimeout(h);h=setTimeout(function(){fn.apply(null,a)},ms)}}
 $("qW").addEventListener("input",debounce(function(){var q=$("qW").value.trim(); $("chipsW").querySelectorAll("button").forEach(function(x){x.classList.remove("on")}); loadWorld(q.length>1?q:"");},450));
 $("qC").addEventListener("input",debounce(function(){var q=$("qC").value.trim(); loadChr(q.length>1?q:"");},450));
+/* celular y PC: al buscar, subir el buscador arriba para ver los resultados sobre el teclado */
+function liftSearch(inp){var lb=inp.closest(".rd-search")||inp;setTimeout(function(){var y=lb.getBoundingClientRect().top+window.pageYOffset-8;window.scrollTo({top:y,behavior:"smooth"});},350);}
+["qW","qC"].forEach(function(k){var el=$(k);el.addEventListener("focus",function(){liftSearch(el)});el.addEventListener("input",debounce(function(){liftSearch(el)},700));});
 
 /* reproductor */
 var audio=new Audio(); audio.preload="none"; audio.volume=0.8;
