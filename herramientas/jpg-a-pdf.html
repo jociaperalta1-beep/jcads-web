@@ -256,4 +256,8 @@ $("scOk").onclick=function(){
  };
 })();
 </script>
+<script>(function(){if(!/[?&]escanear=1/.test(location.search))return;
+var st=document.createElement("style");st.textContent="@keyframes scp{0%,100%{box-shadow:0 0 0 0 rgba(250,204,21,.7)}50%{box-shadow:0 0 0 14px rgba(250,204,21,0)}}.scanbtn{animation:scp 1.4s ease-in-out 4}";document.head.appendChild(st);
+function go(){var h=document.querySelector("h1"),p=document.querySelector(".sub");if(h)h.textContent="Escanear documento";if(p)p.textContent="Sacale una foto al papel: se recorta y endereza solo, y lo pasás a PDF.";document.title="Escanear documento a PDF gratis | JC ADS";var b=document.querySelector(".scanbtn");if(b)b.scrollIntoView({block:"center"});}
+setTimeout(go,400);})();</script>
 </body></html>
