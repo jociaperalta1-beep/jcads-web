@@ -2159,6 +2159,13 @@
       </div>
     </div>
 
+    <div class="x-modal" id="kdModal" hidden role="dialog" aria-modal="true" aria-labelledby="kdTitle">
+      <div class="x-card" style="width:min(900px,100%);text-align:left">
+        <button type="button" class="x-mx" data-kdx aria-label="Cerrar" title="Cerrar">✕</button>
+        <h2 id="kdTitle"></h2>
+        <div id="kdBody" style="overflow-x:auto;margin-top:12px"></div>
+      </div>
+    </div>
     <div class="x-modal" id="okModal" hidden role="dialog" aria-modal="true" aria-labelledby="okT">
       <div class="x-card">
         <button type="button" class="x-mx" data-close aria-label="Cerrar" title="Cerrar" data-i18n-aria="mx_close" data-i18n-title="mx_close">✕</button>
@@ -3582,9 +3589,31 @@
         }
         return fv(v);
       }
+      // Detalle de cada casilla del panel (solo ver, no cambia nada)
+      var KDET = { anunciantes: "u:anunciante", editores: "u:editor", afiliados: "u:afiliado",
+        campanas_activas: "c:activa", campanas_pendientes: "c:pendiente", impresiones: "c", clics: "c", ctr: "c", gasto_usd: "c", ecpm_usd: "c",
+        ganancia_editores_usd: "c", ingreso_plataforma_usd: "c", pagos_recibidos_usd: "p", eventos_bloqueados: "t",
+        anunciantes_referidos: "a", costo_afiliados_usd: "a", afiliados_retenido_usd: "a", afiliados_disponible_usd: "a", afiliados_en_pago_usd: "a",
+        afiliados_pagado_usd: "a", afiliados_a_descontar_usd: "a", saldo_editor_pendiente_usd: "e" };
+      async function kdetOpen(k) {
+        var m = document.getElementById("kdModal"), b = document.getElementById("kdBody"), sp = KDET[k].split(":"), t = sp[0], f = (sp[1] || "").toLowerCase();
+        document.getElementById("kdTitle").textContent = lbl(k); b.innerHTML = '<p class="x-empty">Cargando…</p>'; m.hidden = false;
+        try {
+          var path = { u: "/auth/admin/users", c: "/campaigns", p: "/payments/bank-transfer", t: "/admin/traffic-audit", a: "/admin/affiliates/commissions", e: "/admin/payouts" }[t];
+          var d = rows(await api(path));
+          if (t === "u") d = d.filter(function (x) { return String(x.role || "").toLowerCase() === f; }).map(function (x) { return { email: x.email, name: x.name, estado: x.is_active ? "Activa" : "Bloqueada", tipo: /^prueba\./i.test(x.email || "") ? "PRUEBA" : "Real" }; });
+          if (t === "c" && f) d = d.filter(function (x) { return String(x.status || "").toLowerCase().indexOf(f) === 0; });
+          document.getElementById("kdTitle").textContent = lbl(k) + " (" + d.length + ")";
+          b.innerHTML = d.length ? renderAny(d) : EMPTY;
+          if (t === "u") Array.prototype.forEach.call(b.querySelectorAll("tr"), function (r) { if (/PRUEBA/.test(r.textContent)) r.style.color = "#ffb066"; });
+        } catch (e) { b.innerHTML = '<p class="x-err">No se pudo cargar: ' + esc(e && e.message || e) + "</p>"; }
+      }
+      document.addEventListener("click", function (ev) { var c = ev.target.closest && ev.target.closest("#admKpis [data-kdet]"); if (c) kdetOpen(c.getAttribute("data-kdet")); var x = ev.target.closest && ev.target.closest("#kdModal [data-kdx]"); if (x || ev.target.id === "kdModal") document.getElementById("kdModal").hidden = true; });
+      document.addEventListener("keydown", function (ev) { if (ev.key === "Enter" && ev.target.closest && ev.target.closest("#admKpis [data-kdet]")) kdetOpen(ev.target.getAttribute("data-kdet")); });
       function kpiHtml(k, v) {
         var s = kpiVal(k, v), txt = typeof v === "string" && isNaN(+v) && s.length > 14;
-        return '<div class="x-card x-kpi"><p class="x-lbl">' + esc(lbl(k)) + '</p><p class="x-val' + (txt ? " x-val--text" : "") + '">' + esc(s) + "</p></div>";
+        var dk = KDET[k] ? ' data-kdet="' + esc(k) + '" role="button" tabindex="0" title="Ver detalle" style="cursor:pointer"' : "";
+        return '<div class="x-card x-kpi"' + dk + '><p class="x-lbl">' + esc(lbl(k)) + '</p><p class="x-val' + (txt ? " x-val--text" : "") + '">' + esc(s) + "</p></div>";
       }
       function fdate(v) {
         var m = /^(\d{4})-(\d{2})-(\d{2})[T ](\d{2}):(\d{2})(?::(\d{2}))?(?:\.\d+)?\s*(Z|[+-]\d{2}:?\d{2})?$/i.exec(String(v || "").trim());
