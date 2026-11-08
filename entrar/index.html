@@ -3902,7 +3902,7 @@
         loadPayout("aff");
         try {
           var d = (await api("/affiliates/me")) || {}, code = d.codigo || d.referral_code || d.code;
-          var link = code ? "https://hark.site/s/8563b99f-e0a3-43f0-8b82-cb8c0fb08f69/index.html?ref=" + encodeURIComponent(code) : "";
+          var link = code ? "https://jcads.net/entrar/?ref=" + encodeURIComponent(code) : "";
           $("#affLink").textContent = link || "—";
           $("#shareWa").href = "https://wa.me/?text=" + encodeURIComponent(t("share_msg") + " " + link);
           $("#shareFb").href = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(link);
@@ -5720,7 +5720,7 @@
     </script>
     <script>
       // ---- Open on phone: self-contained QR encoder (byte mode, ECC level M) ----
-      var SITE_URL = "https://hark.site/s/8563b99f-e0a3-43f0-8b82-cb8c0fb08f69";
+      var SITE_URL = "https://jcads.net/entrar/";
       var QR = (function () {
         var EXP = [], LOG = [];
         (function () { var x = 1; for (var i = 0; i < 255; i++) { EXP[i] = x; LOG[x] = i; x <<= 1; if (x & 0x100) x ^= 0x11d; } for (i = 255; i < 512; i++) EXP[i] = EXP[i - 255]; })();
